@@ -15,6 +15,7 @@ const events = [
     desc: "Local bands and touring acts hit the stage under the stars. Grab a drink, grab a seat, and let the music move you.",
     img: eventsMusic,
     icon: Music,
+    link: "/live-music",
   },
   {
     title: "Themed Night Karaoke",
@@ -22,6 +23,7 @@ const events = [
     desc: "Take the mic. Own the room. From country classics to 90s hip-hop — it's your stage.",
     img: karaoke,
     icon: Mic,
+    link: "/karaoke-night",
   },
   {
     title: "Golf Simulator Room",
@@ -29,6 +31,7 @@ const events = [
     desc: "Tee off without leaving the bar. Our private golf sim room is perfect for groups, parties, or just flexing your swing.",
     img: golfSim,
     icon: Target,
+    link: "/golf-simulator",
   },
   {
     title: "Private Events & Parties",
@@ -36,6 +39,7 @@ const events = [
     desc: "Birthdays, corporate events, lake celebrations — we'll handle the food, drinks, and vibes. You just show up.",
     img: privateEventsImg,
     icon: PartyPopper,
+    link: "/catering",
   },
 ];
 
@@ -57,19 +61,21 @@ const Events = () => {
         <div className="container-site flex flex-col gap-12">
           {events.map((event, i) => (
             <FadeIn key={event.title} delay={i * 0.1}>
-              <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 items-center ${i % 2 === 1 ? "lg:direction-rtl" : ""}`}>
-                <div className={i % 2 === 1 ? "lg:order-2" : ""}>
-                  <img src={event.img} alt={event.title} className="w-full rounded-xl aspect-[16/10] object-cover" loading="lazy" />
-                </div>
-                <div className={i % 2 === 1 ? "lg:order-1" : ""}>
-                  <div className="flex items-center gap-3 mb-3">
-                    <event.icon size={24} className="text-primary" />
-                    <h2 className="text-2xl md:text-3xl font-display font-bold">{event.title}</h2>
+              <Link to={event.link} className="block group">
+                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 items-center ${i % 2 === 1 ? "lg:direction-rtl" : ""}`}>
+                  <div className={i % 2 === 1 ? "lg:order-2" : ""}>
+                    <img src={event.img} alt={event.title} className="w-full rounded-xl aspect-[16/10] object-cover group-hover:scale-[1.02] transition-transform duration-300" loading="lazy" />
                   </div>
-                  <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-3">{event.when}</p>
-                  <p className="text-muted-foreground text-lg leading-relaxed">{event.desc}</p>
+                  <div className={i % 2 === 1 ? "lg:order-1" : ""}>
+                    <div className="flex items-center gap-3 mb-3">
+                      <event.icon size={24} className="text-primary" />
+                      <h2 className="text-2xl md:text-3xl font-display font-bold group-hover:text-primary transition-colors">{event.title}</h2>
+                    </div>
+                    <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-3">{event.when}</p>
+                    <p className="text-muted-foreground text-lg leading-relaxed">{event.desc}</p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </FadeIn>
           ))}
         </div>
