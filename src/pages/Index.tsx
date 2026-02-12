@@ -315,7 +315,7 @@ const Index = () => {
         <div className="container-site text-center relative z-10">
           <FadeIn>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold uppercase text-primary-foreground">
-              The Night Doesn't End Here.
+              You're Table Is Waiting.
             </h2>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
