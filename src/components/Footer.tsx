@@ -11,7 +11,7 @@ const Footer = () => {
           <div>
             <img src={logo} alt="Elements by 456" className="h-20 w-auto mb-4 mix-blend-lighten" />
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Gun Barrel City's ultimate lakefront social destination. Strong drinks. Bold food. Big vibes.
+              Cedar Creek Lake's go-to spot for elevated comfort food, handcrafted cocktails, and unforgettable nights.
             </p>
           </div>
 
