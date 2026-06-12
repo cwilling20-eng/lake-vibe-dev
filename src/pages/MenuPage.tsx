@@ -1,146 +1,248 @@
+import { useSearchParams } from "react-router-dom";
+import { Star } from "lucide-react";
 import Layout from "@/components/Layout";
 import FadeIn from "@/components/FadeIn";
-import SectionHeading from "@/components/SectionHeading";
-import { Star } from "lucide-react";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useMenu } from "@/hooks/useMenu";
+import { MEALS, type MealKey, type MenuCategory, type MenuItem } from "@/lib/menuSource";
 
-interface MenuItem {
-  name: string;
-  desc: string;
-  price: number;
-  fav?: boolean;
-  gf?: boolean;
-  extras?: string;
-}
+// --- Static marketing copy that is NOT in the Sheet -------------------------
+const MEAL_META: Record<
+  MealKey,
+  {
+    label: string;
+    hours: string;
+    hoursTBD?: boolean;
+    tagline?: string;
+    difference?: { title: string; subtitle: string };
+  }
+> = {
+  brunch: { label: "Brunch", hours: "Sat & Sun · 11am–2pm" },
+  midday: {
+    label: "Midday",
+    hours: "Weekdays · 11am–3pm · Tea & Water included",
+    difference: { title: "The Elements Difference", subtitle: "Scratch-Made. Never Ordinary." },
+  },
+  dinner: {
+    label: "Dinner",
+    hours: "Dinner service hours coming soon",
+    hoursTBD: true,
+    tagline: "We fry everything in beef tallow. You'll taste the difference.",
+  },
+};
 
-interface MenuCategory {
-  title: string;
-  items: MenuItem[];
-}
+// Upsell lines that don't live in the Sheet. Keyed by Section title; shown under
+// that section wherever it appears. Edit freely (purely presentational).
+const SECTION_UPSELLS: Record<string, string> = {
+  Handhelds: "Make it a basket +$4",
+  Greens: "Add a ¼ lb patty for $5",
+  Salads: "Add a ¼ lb patty for $5",
+};
 
-const menu: MenuCategory[] = [
-  {
-    title: "Warm-Up",
-    items: [
-      { name: "Queso Gone Wild", desc: "Smoked brisket folded into creamy queso with pico de gallo and jalapeños. Served hot with tortilla chips and fresh salsa.", price: 14, gf: true },
-      { name: "Big Pretzel Energy", desc: "A jumbo Bavarian-style pretzel, brushed with butter and salt, served with our beer cheese and stone-ground mustard.", price: 17 },
-      { name: "Goldy Curdy Goodness", desc: "Golden fried cheese curds drizzled with hot honey and served with ranch.", price: 12, fav: true },
-      { name: "Backyard BBQ Stack", desc: "House chips or fries piled high with queso, pico de gallo, and a sweet BBQ drizzle.", price: 10, gf: true },
-      { name: "Crunchy Dill Bites", desc: "Crispy fried pickles with a side of ranch or jalapeño ranch.", price: 9, fav: true },
-    ],
-  },
-  {
-    title: "Greens",
-    items: [
-      { name: "Back Porch House Salad", desc: "Crisp greens, cherry tomatoes, red onion, shredded cheese, and crunchy croutons. Choice of dressing.", price: 10, gf: true },
-      { name: "Buffalo Chicken Crunch Salad", desc: "Crisp greens topped with fried chicken tossed in buffalo sauce, tomatoes, shredded cheese, and crunchy tortilla strips.", price: 15 },
-      { name: "Cowboy Wedge Salad", desc: "A cold, crisp iceberg wedge loaded with bacon crumbles, tomatoes, red onion, and cheddar.", price: 11 },
-    ],
-  },
-  {
-    title: "Handhelds",
-    items: [
-      { name: "Lakehouse Street Tacos", desc: "Three warm corn tortillas loaded with your choice of brisket, pulled pork, or chicken, pico, and chipotle crema.", price: 16, gf: true },
-      { name: "Mother Clucker", desc: "Crispy fried chicken or grilled topped with pickles and garlic aioli on a brioche bun.", price: 13, extras: "Nashville Hot or Buffalo +$1" },
-      { name: "The Turkey Clubhouse", desc: "Toasted sourdough with roasted turkey, Swiss cheese, bacon, tomato, red onion, avocado ranch, and honey mustard.", price: 12, fav: true },
-      { name: "456 Cheeseburger", desc: "¼ lb burger with cheddar, garlic aioli, pickles, onions, tomatoes, and lettuce on a brioche bun.", price: 14 },
-      { name: 'Fit Burger "AKA Donny"', desc: "¼ lb burger topped with half a sliced avocado and roasted jalapeño, served on a bed of greens with creamy goat cheese.", price: 14, fav: true, gf: true },
-      { name: "Pimento Hustler", desc: "¼ lb burger topped with house pimento cheese, candied jalapeños, and crispy bacon.", price: 16, fav: true },
-      { name: "Jack'd & Loaded", desc: "¼ lb burger topped with pepper jack cheese, bacon, grilled onions, and Jack glaze on a brioche bun.", price: 15 },
-      { name: "Brisket Jam Burger", desc: "¼ lb burger topped with smoked brisket, rich bacon jam, melted cheddar, and roasted garlic aioli.", price: 18 },
-    ],
-  },
-  {
-    title: "Entrees",
-    items: [
-      { name: "Nani's Country Chicken", desc: "Hand-breaded fried chicken smothered in bacon or jalapeño bacon gravy, served with mashed potatoes.", price: 17 },
-      { name: "All Star Alfredo", desc: "Creamy. Cheesy. Indulgent. Fettuccine in rich Alfredo with Parmesan and cracked black pepper.", price: 9, fav: true },
-      { name: "Smoked Mac Attack", desc: "Enjoy creamy smoked mac & cheese that satisfies.", price: 9 },
-      { name: "Aunties Meatloaf", desc: "House-made meatloaf glazed with BBQ sauce, topped with crispy onion strings, and served with creamy mashed potatoes.", price: 15 },
-      { name: "Chicken Fried Chaos", desc: "Texas-sized crispy chicken fried steak, in bacon or jalapeño bacon gravy, served with mashed potatoes.", price: 19 },
-      { name: "The Loaded Spud Show", desc: "A jumbo baked potato loaded with butter, sour cream, cheddar, bacon, and green onions.", price: 10 },
-    ],
-  },
-  {
-    title: "Flatbreads",
-    items: [
-      { name: "Pitmaster BBQ", desc: "Smoked brisket, tangy BBQ sauce, red onion, and mozzarella baked to perfection.", price: 15 },
-      { name: "Creamy Clucker Alfredo", desc: "Grilled chicken, rich house Alfredo, and melted mozzarella baked on a crispy crust.", price: 14 },
-      { name: "Hot Honey Pepperoni", desc: "Pepperoni, mozzarella, and marinara finished with a drizzle of hot honey.", price: 14 },
-      { name: "Cluckin' Good Bacon Ranch", desc: "Grilled chicken and crispy bacon layered over a creamy ranch base, and topped with melted mozzarella.", price: 14, fav: true },
-    ],
-  },
-  {
-    title: "The Side Pieces",
-    items: [
-      { name: "Mashed Potatoes", desc: "", price: 4 },
-      { name: "Okra", desc: "", price: 5 },
-      { name: "Green Beans", desc: "", price: 4 },
-      { name: "Mac N' Cheese", desc: "", price: 4 },
-      { name: "Handcut Fries", desc: "", price: 7 },
-      { name: "Side Salad", desc: "Gluten free.", price: 6, gf: true },
-    ],
-  },
-  {
-    title: "Sugar Fix",
-    items: [
-      { name: "Cinnamon Crunch Cake", desc: "Sweet, crunchy, absolutely addictive.", price: 10 },
-      { name: "Chocolate Fudge Brownie", desc: "Rich and decadent.", price: 12 },
-      { name: "Bourbon Bread Pudding", desc: "Southern comfort in every bite.", price: 9, fav: true },
-      { name: "Texas Pecan Pie", desc: "A Lone Star classic.", price: 8 },
-      { name: 'B.Y.O.F. "Build Your Own Float"', desc: "Choose your soda, add a scoop of vanilla.", price: 5 },
-    ],
-  },
-];
+const DEFAULT_MEAL: MealKey = "dinner";
+const isMealKey = (v: string | null): v is MealKey => MEALS.some((m) => m.key === v);
+
+// Prefix "$" only when the price is purely numeric ("14" -> "$14", "Market" -> "Market").
+const formatPrice = (price: string): string =>
+  /^\d+(\.\d+)?$/.test(price.trim()) ? `$${price.trim()}` : price;
+
+// Tags -> badges. Drives both the per-item markers and the legend.
+const TagBadges = ({ tags }: { tags: string[] }) => (
+  <>
+    {tags.map((tag) => {
+      if (tag === "House Favorite")
+        return (
+          <Star key={tag} size={14} className="text-primary fill-primary" aria-label="House Favorite" />
+        );
+      if (tag === "GF")
+        return (
+          <span key={tag} className="text-xs text-muted-foreground italic">
+            GF
+          </span>
+        );
+      return (
+        <span
+          key={tag}
+          className="rounded border border-border px-1.5 py-0.5 text-[10px] uppercase tracking-wide text-muted-foreground"
+        >
+          {tag}
+        </span>
+      );
+    })}
+  </>
+);
+
+// Item card — markup preserved verbatim from the original menu, with the
+// fav/gf booleans swapped for tag badges and string-aware price formatting.
+const MenuCard = ({ item, index }: { item: MenuItem; index: number }) => (
+  <FadeIn delay={index * 0.05}>
+    <div className="bg-card rounded-lg p-5 border border-border hover:border-primary/20 transition-colors">
+      <div className="flex justify-between items-start gap-4">
+        <div className="flex-1">
+          <div className="flex items-center gap-2 flex-wrap">
+            <h3 className="font-display font-bold text-lg">{item.name}</h3>
+            <TagBadges tags={item.tags} />
+          </div>
+          {item.desc && <p className="mt-1 text-sm text-muted-foreground">{item.desc}</p>}
+          {item.extras && <p className="mt-1 text-xs text-primary">+ {item.extras}</p>}
+        </div>
+        <span className="text-primary font-display font-bold text-xl">{formatPrice(item.price)}</span>
+      </div>
+    </div>
+  </FadeIn>
+);
+
+const MenuCategorySection = ({ category }: { category: MenuCategory }) => {
+  // desc-driven grid rule: sections whose items carry descriptions render two
+  // columns; description-less sections (sides, drinks, extras) render denser.
+  const dense = !category.items[0]?.desc;
+  const upsell = SECTION_UPSELLS[category.title];
+  return (
+    <section className="py-10 bg-background border-t border-border">
+      <div className="container-site">
+        <FadeIn>
+          <h2 className="text-2xl md:text-3xl font-display font-bold uppercase text-primary mb-8 text-center">
+            {category.title}
+          </h2>
+        </FadeIn>
+        <div className={`grid gap-4 ${dense ? "grid-cols-2 md:grid-cols-3" : "grid-cols-1 md:grid-cols-2"}`}>
+          {category.items.map((item, i) => (
+            <MenuCard key={item.name} item={item} index={i} />
+          ))}
+        </div>
+        {upsell && <p className="mt-6 text-center text-sm italic text-primary/80">{upsell}</p>}
+      </div>
+    </section>
+  );
+};
+
+// Legend derived from the tags actually present in the active meal.
+const MealLegend = ({ categories }: { categories: MenuCategory[] }) => {
+  const tags = new Set<string>();
+  categories.forEach((c) => c.items.forEach((i) => i.tags.forEach((t) => tags.add(t))));
+  const hasFav = tags.has("House Favorite");
+  const hasGF = tags.has("GF");
+  if (!hasFav && !hasGF) return null;
+  return (
+    <div className="mt-4 flex items-center justify-center gap-6 text-sm text-muted-foreground">
+      {hasFav && (
+        <span className="flex items-center gap-1">
+          <Star size={14} className="text-primary fill-primary" /> House Favorite
+        </span>
+      )}
+      {hasGF && <span className="italic">GF = Gluten Free</span>}
+    </div>
+  );
+};
+
+// Layout-matched skeleton for the no-data edge (seed makes this rare in practice).
+const MenuSkeleton = () => (
+  <>
+    {[0, 1].map((s) => (
+      <section key={s} className="py-10 bg-background border-t border-border">
+        <div className="container-site">
+          <Skeleton className="h-8 w-48 mx-auto mb-8" />
+          <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <div key={i} className="bg-card rounded-lg p-5 border border-border">
+                <div className="flex justify-between items-start gap-4">
+                  <div className="flex-1 space-y-2">
+                    <Skeleton className="h-5 w-2/3" />
+                    <Skeleton className="h-4 w-full" />
+                    <Skeleton className="h-4 w-4/5" />
+                  </div>
+                  <Skeleton className="h-6 w-10" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))}
+  </>
+);
+
+const MealView = ({ mealKey, categories }: { mealKey: MealKey; categories: MenuCategory[] }) => {
+  const meta = MEAL_META[mealKey];
+  if (categories.length === 0) return <MenuSkeleton />;
+  return (
+    <>
+      <div className="container-site text-center mt-6">
+        {meta.hoursTBD ? (
+          <p className="inline-block rounded-full border border-dashed border-primary/40 px-4 py-1 text-xs uppercase tracking-widest text-muted-foreground italic">
+            {meta.hours}
+          </p>
+        ) : (
+          <p className="text-sm uppercase tracking-widest text-muted-foreground">{meta.hours}</p>
+        )}
+
+        {meta.tagline && <p className="mt-3 text-muted-foreground text-lg">{meta.tagline}</p>}
+
+        {meta.difference && (
+          <div className="mt-4">
+            <p className="font-display text-xl font-bold gold-gradient-text">{meta.difference.title}</p>
+            <p className="mt-1 text-muted-foreground">{meta.difference.subtitle}</p>
+          </div>
+        )}
+
+        <MealLegend categories={categories} />
+      </div>
+
+      {categories.map((category) => (
+        <MenuCategorySection key={category.title} category={category} />
+      ))}
+    </>
+  );
+};
 
 const MenuPage = () => {
+  const { data: menus } = useMenu();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const active: MealKey = isMealKey(searchParams.get("meal"))
+    ? (searchParams.get("meal") as MealKey)
+    : DEFAULT_MEAL;
+
+  const handleChange = (value: string) => {
+    const next = new URLSearchParams(searchParams);
+    next.set("meal", value);
+    setSearchParams(next, { replace: true });
+  };
+
   return (
     <Layout>
-      <section className="pt-28 pb-8 bg-background">
+      <section className="pt-28 pb-4 bg-background">
         <div className="container-site text-center">
           <FadeIn>
             <h1 className="text-4xl md:text-6xl font-display font-bold uppercase">
               Our <span className="gold-gradient-text">Menu</span>
             </h1>
-            <p className="mt-4 text-muted-foreground text-lg">We fry everything in beef tallow. You'll taste the difference.</p>
-            <div className="mt-3 flex items-center justify-center gap-6 text-sm text-muted-foreground">
-              <span className="flex items-center gap-1"><Star size={14} className="text-primary fill-primary" /> House Favorite</span>
-              <span className="italic">GF = Gluten Free</span>
-            </div>
           </FadeIn>
         </div>
       </section>
 
-      {menu.map((category) => (
-        <section key={category.title} className="py-10 bg-background border-t border-border">
-          <div className="container-site">
-            <FadeIn>
-              <h2 className="text-2xl md:text-3xl font-display font-bold uppercase text-primary mb-8 text-center">
-                {category.title}
-              </h2>
-            </FadeIn>
-            <div className={`grid gap-4 ${category.items[0]?.desc ? "grid-cols-1 md:grid-cols-2" : "grid-cols-2 md:grid-cols-3"}`}>
-              {category.items.map((item, i) => (
-                <FadeIn key={item.name} delay={i * 0.05}>
-                  <div className="bg-card rounded-lg p-5 border border-border hover:border-primary/20 transition-colors">
-                    <div className="flex justify-between items-start gap-4">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <h3 className="font-display font-bold text-lg">{item.name}</h3>
-                          {item.fav && <Star size={14} className="text-primary fill-primary" />}
-                          {item.gf && <span className="text-xs text-muted-foreground italic">GF</span>}
-                        </div>
-                        {item.desc && <p className="mt-1 text-sm text-muted-foreground">{item.desc}</p>}
-                        {item.extras && <p className="mt-1 text-xs text-primary">+ {item.extras}</p>}
-                      </div>
-                      <span className="text-primary font-display font-bold text-xl">${item.price}</span>
-                    </div>
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
-          </div>
-        </section>
-      ))}
+      <Tabs value={active} onValueChange={handleChange} className="w-full">
+        <div className="container-site flex justify-center">
+          <TabsList className="inline-flex h-auto justify-center gap-2 md:gap-8 rounded-none border-b border-border bg-transparent p-0">
+            {MEALS.map((m) => (
+              <TabsTrigger
+                key={m.key}
+                value={m.key}
+                className="rounded-none border-b-2 border-transparent bg-transparent px-4 py-3 font-display text-base md:text-lg font-bold uppercase tracking-widest text-muted-foreground shadow-none transition-all hover:text-foreground data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:shadow-none"
+              >
+                {MEAL_META[m.key].label}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </div>
+
+        {MEALS.map((m) => (
+          <TabsContent key={m.key} value={m.key} className="mt-0">
+            <MealView mealKey={m.key} categories={menus?.[m.key] ?? []} />
+          </TabsContent>
+        ))}
+      </Tabs>
     </Layout>
   );
 };
