@@ -2,23 +2,58 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import FadeIn from "@/components/FadeIn";
 import SectionHeading from "@/components/SectionHeading";
-import { Clock, CalendarDays, Flame } from "lucide-react";
+import { Clock, Beef, Mic, Music } from "lucide-react";
+import karaokeFlyer from "@/assets/686541286_122145158900414446_7514774014079256357_n.webp";
+import djToriFlyer from "@/assets/704427214_27222040184152194_368634848445025664_n.webp";
+import steakShrimp from "@/assets/Steak and Shrimp.webp";
+import salmonSquared from "@/assets/salmon_squared.webp";
+import grilledSalmon from "@/assets/Grilled Salmon.webp";
+import steakSquared from "@/assets/steak_squared.webp";
+import steakMedallions from "@/assets/Steak Medallions.webp";
+import pancakes from "@/assets/Pancakes.webp";
 
-const dailySpecials = [
-  { day: "Monday", title: "Half-Price Appetizers", desc: "Kick off the week with all appetizers at half price." },
-  { day: "Wednesday", title: "Wing Wednesday", desc: "50¢ wings all night. Toss 'em in any sauce." },
-  { day: "Thursday", title: "Karaoke Night Drink Deals", desc: "Discounted wells and drafts while you own the mic." },
-  { day: "Friday", title: "Live Music Happy Hour", desc: "Extended happy hour pricing from 5–7pm with live music." },
+// Flyer nights (Thu / Fri) — promotional posters shown in full.
+const flyerNights = [
+  {
+    day: "Thursday",
+    title: "Karaoke · 6–9pm",
+    desc: "$12 street tacos and $5 margaritas while you own the mic.",
+    img: karaokeFlyer,
+    icon: Mic,
+  },
+  {
+    day: "Friday",
+    title: "DJ Tori · 7–11pm",
+    desc: "DJ Tori spins all night. Great music, good people, epic nights.",
+    img: djToriFlyer,
+    icon: Music,
+  },
 ];
 
-const weeklySpecials = [
-  { title: "Brisket Jam Burger Combo", desc: "Our signature burger with fries and a draft beer.", price: "$22" },
-  { title: "Date Night Package", desc: "Two entrees, a shared appetizer, and a bottle of wine.", price: "$65" },
+// Deal / spotlight days without a flyer.
+const dealDays = [
+  {
+    day: "Monday",
+    title: "Burger Monday",
+    desc: "$1 off any burger — and another $1 off when you add fries. Dinner only.",
+    icon: Beef,
+  },
+  {
+    day: "Saturday",
+    title: "Live Music · 7–11pm",
+    desc: "Live music every Saturday night. Last Saturday of the month: Comedy Show.",
+    icon: Music,
+  },
 ];
 
-const limitedOffers = [
-  { title: "Crawfish Boil Weekend", desc: "Seasonal crawfish done right — Cajun spiced with all the fixings. Available while supplies last.", tag: "Limited Run" },
-  { title: "Summer Sangria Pitcher", desc: "Refreshing house-made sangria perfect for the patio. Grab it before it's gone.", tag: "Seasonal" },
+// Rotating chef features — different plates, name-only captions.
+const featuredSpecials = [
+  { name: "Steak & Shrimp", img: steakShrimp },
+  { name: "Salmon", img: salmonSquared },
+  { name: "Salmon", img: grilledSalmon },
+  { name: "Steak Medallions", img: steakSquared },
+  { name: "Steak Medallions", img: steakMedallions },
+  { name: "Pancakes", img: pancakes },
 ];
 
 const Specials = () => {
@@ -29,27 +64,68 @@ const Specials = () => {
         <div className="container-site text-center">
           <FadeIn>
             <h1 className="text-4xl md:text-6xl font-display font-bold uppercase">
-              What's On Special <span className="gold-gradient-text">This Week</span>
+              What's <span className="gold-gradient-text">Happening</span>
             </h1>
-            <p className="mt-4 text-muted-foreground text-lg">Deals, steals, and flavors you won't want to miss.</p>
+            <p className="mt-4 text-muted-foreground text-lg">Weekly nights out, drink deals, and rotating chef features.</p>
           </FadeIn>
         </div>
       </section>
 
-      {/* Daily Specials */}
+      {/* Weekly Lineup */}
       <section className="section-padding bg-background">
         <div className="container-site">
-          <SectionHeading title="Daily Specials" subtitle="Something special every day of the week." />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {dailySpecials.map((s, i) => (
-              <FadeIn key={s.day} delay={i * 0.1}>
-                <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/30 hover:scale-[1.02] transition-all duration-300 h-full">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Clock size={16} className="text-primary" />
-                    <span className="text-primary font-display text-sm font-bold uppercase tracking-wider">{s.day}</span>
+          <SectionHeading title="Weekly Lineup" subtitle="Here's what's going down when we're open." />
+
+          {/* Happy Hour banner */}
+          <FadeIn>
+            <div className="bg-card border border-primary/30 rounded-xl p-6 md:p-8 flex items-center gap-5 mb-10">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full gold-gradient flex items-center justify-center">
+                <Clock size={22} className="text-primary-foreground" />
+              </div>
+              <div>
+                <h3 className="font-display text-xl md:text-2xl font-bold text-primary">Happy Hour</h3>
+                <p className="text-muted-foreground">5–7pm, every day we're open.</p>
+              </div>
+            </div>
+          </FadeIn>
+
+          {/* Entertainment nights — flyers */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            {flyerNights.map((night, i) => (
+              <FadeIn key={night.day} delay={i * 0.1}>
+                <div className="bg-card rounded-xl border border-border overflow-hidden hover:border-primary/30 transition-colors h-full">
+                  <div className="h-80 flex items-center justify-center bg-background">
+                    <img
+                      src={night.img}
+                      alt={`${night.title} — ${night.day}`}
+                      className="max-h-full w-auto object-contain"
+                      loading="lazy"
+                    />
                   </div>
-                  <h3 className="text-lg font-display font-bold">{s.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 mb-1">
+                      <night.icon size={16} className="text-primary" />
+                      <span className="text-primary text-sm font-bold uppercase tracking-wider">{night.day}</span>
+                    </div>
+                    <h3 className="text-lg font-display font-bold">{night.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{night.desc}</p>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+
+          {/* Deal days */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {dealDays.map((deal, i) => (
+              <FadeIn key={deal.day} delay={i * 0.1}>
+                <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/30 transition-colors h-full">
+                  <div className="flex items-center gap-2 mb-3">
+                    <deal.icon size={18} className="text-primary" />
+                    <span className="text-primary text-sm font-bold uppercase tracking-wider">{deal.day}</span>
+                  </div>
+                  <h3 className="text-lg font-display font-bold">{deal.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{deal.desc}</p>
                 </div>
               </FadeIn>
             ))}
@@ -57,43 +133,27 @@ const Specials = () => {
         </div>
       </section>
 
-      {/* Weekly Specials */}
+      {/* Featured Specials */}
       <section className="section-padding bg-secondary">
         <div className="container-site">
-          <SectionHeading title="Weekly Specials" subtitle="Available all week long." />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {weeklySpecials.map((s, i) => (
-              <FadeIn key={s.title} delay={i * 0.1}>
-                <div className="bg-card rounded-xl p-8 border border-border hover:border-primary/30 hover:scale-[1.02] transition-all duration-300">
-                  <div className="flex items-center gap-2 mb-3">
-                    <CalendarDays size={18} className="text-primary" />
-                    <span className="text-primary font-display text-2xl font-bold">{s.price}</span>
+          <SectionHeading
+            title="Featured Specials"
+            subtitle="Rotating chef features — ask your server what's on this week."
+          />
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+            {featuredSpecials.map((item, i) => (
+              <FadeIn key={i} delay={(i % 3) * 0.1}>
+                <div className="group relative rounded-xl overflow-hidden aspect-square border border-border">
+                  <img
+                    src={item.img}
+                    alt={item.name}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <h3 className="font-display font-bold text-lg text-primary">{item.name}</h3>
                   </div>
-                  <h3 className="text-xl font-display font-bold">{s.title}</h3>
-                  <p className="mt-2 text-muted-foreground leading-relaxed">{s.desc}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Limited-Time Offers */}
-      <section className="section-padding bg-background">
-        <div className="container-site">
-          <SectionHeading title="Limited-Time Offers" subtitle="Get 'em before they're gone." />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {limitedOffers.map((s, i) => (
-              <FadeIn key={s.title} delay={i * 0.1}>
-                <div className="bg-card rounded-xl p-8 border border-primary/20 hover:border-primary/40 hover:scale-[1.02] transition-all duration-300 relative overflow-hidden">
-                  <div className="absolute top-4 right-4">
-                    <span className="flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-primary border border-primary px-3 py-1.5 rounded-md">
-                      <Flame size={12} />
-                      {s.tag}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-display font-bold mt-2">{s.title}</h3>
-                  <p className="mt-3 text-muted-foreground leading-relaxed">{s.desc}</p>
                 </div>
               </FadeIn>
             ))}
@@ -108,7 +168,7 @@ const Specials = () => {
             <h2 className="text-3xl md:text-4xl font-display font-bold uppercase text-primary-foreground">
               Don't Miss Out
             </h2>
-            <p className="mt-3 text-primary-foreground/80">Specials change weekly. Follow us or just show up.</p>
+            <p className="mt-3 text-primary-foreground/80">The lineup runs weekly. Follow us or just show up.</p>
             <Link
               to="/reservations"
               className="mt-6 inline-block px-8 py-4 bg-background text-foreground text-sm font-bold uppercase tracking-widest rounded-lg hover:bg-background/90 transition-all"

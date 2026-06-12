@@ -6,6 +6,18 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useMenu } from "@/hooks/useMenu";
 import { MEALS, type MealKey, type MenuCategory, type MenuItem } from "@/lib/menuSource";
+import favBeignets from "@/assets/Blueberry Beignets & Lemon Icing.webp";
+import favCheeseburger from "@/assets/456 Cheeseburger.webp";
+import favJackd from "@/assets/Jack'd N Loaded.webp";
+import favBrownie from "@/assets/Chocolate Fudge Brownie.webp";
+
+// Fan Favorites photo strip — visual teaser at the top of the menu (no prices).
+const FAN_FAVORITES = [
+  { name: "Blueberry Beignets", img: favBeignets },
+  { name: "456 Cheeseburger", img: favCheeseburger },
+  { name: "Jack'd & Loaded", img: favJackd },
+  { name: "Chocolate Fudge Brownie", img: favBrownie },
+];
 
 // --- Static marketing copy that is NOT in the Sheet -------------------------
 const MEAL_META: Record<
@@ -13,7 +25,6 @@ const MEAL_META: Record<
   {
     label: string;
     hours: string;
-    hoursTBD?: boolean;
     tagline?: string;
     difference?: { title: string; subtitle: string };
   }
@@ -21,13 +32,12 @@ const MEAL_META: Record<
   brunch: { label: "Brunch", hours: "Sat & Sun · 11am–2pm" },
   midday: {
     label: "Midday",
-    hours: "Weekdays · 11am–3pm · Tea & Water included",
+    hours: "Mon · Thu · Fri · 11am–3pm",
     difference: { title: "The Elements Difference", subtitle: "Scratch-Made. Never Ordinary." },
   },
   dinner: {
     label: "Dinner",
-    hours: "Dinner service hours coming soon",
-    hoursTBD: true,
+    hours: "Served from 4pm",
     tagline: "We fry everything in beef tallow. You'll taste the difference.",
   },
 };
@@ -35,9 +45,7 @@ const MEAL_META: Record<
 // Upsell lines that don't live in the Sheet. Keyed by Section title; shown under
 // that section wherever it appears. Edit freely (purely presentational).
 const SECTION_UPSELLS: Record<string, string> = {
-  Handhelds: "Make it a basket +$4",
-  Greens: "Add a ¼ lb patty for $5",
-  Salads: "Add a ¼ lb patty for $5",
+  Handhelds: "Make it a basket +$4 · Add a ¼ lb patty for $5",
 };
 
 const DEFAULT_MEAL: MealKey = "dinner";
@@ -169,13 +177,7 @@ const MealView = ({ mealKey, categories }: { mealKey: MealKey; categories: MenuC
   return (
     <>
       <div className="container-site text-center mt-6">
-        {meta.hoursTBD ? (
-          <p className="inline-block rounded-full border border-dashed border-primary/40 px-4 py-1 text-xs uppercase tracking-widest text-muted-foreground italic">
-            {meta.hours}
-          </p>
-        ) : (
-          <p className="text-sm uppercase tracking-widest text-muted-foreground">{meta.hours}</p>
-        )}
+        <p className="text-sm uppercase tracking-widest text-muted-foreground">{meta.hours}</p>
 
         {meta.tagline && <p className="mt-3 text-muted-foreground text-lg">{meta.tagline}</p>}
 
@@ -219,6 +221,33 @@ const MenuPage = () => {
               Our <span className="gold-gradient-text">Menu</span>
             </h1>
           </FadeIn>
+        </div>
+      </section>
+
+      {/* Fan Favorites strip — visual teaser, names only (no prices) */}
+      <section className="pb-8 bg-background">
+        <div className="container-site">
+          <FadeIn>
+            <p className="text-center text-sm font-bold uppercase tracking-widest text-primary mb-5">Fan Favorites</p>
+          </FadeIn>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {FAN_FAVORITES.map((fav, i) => (
+              <FadeIn key={fav.name} delay={i * 0.08}>
+                <div className="group relative rounded-xl overflow-hidden aspect-square border border-border">
+                  <img
+                    src={fav.img}
+                    alt={fav.name}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3">
+                    <h3 className="font-display font-bold text-sm md:text-base text-primary leading-tight">{fav.name}</h3>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
 

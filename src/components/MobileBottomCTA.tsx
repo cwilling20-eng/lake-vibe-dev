@@ -1,8 +1,12 @@
+import { ORDER_ONLINE_URL } from "@/lib/siteInfo";
+
 const MobileBottomCTA = () => {
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden">
       <a
-        href="#order"
+        href={ORDER_ONLINE_URL}
+        target="_blank"
+        rel="noopener noreferrer"
         className="block w-full py-4 text-center text-sm font-bold uppercase tracking-widest gold-gradient text-primary-foreground gold-glow"
       >
         Order Online

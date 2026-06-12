@@ -1,30 +1,35 @@
 import { Link } from "react-router-dom";
-import { ChevronDown, Music, Mic, Target, PartyPopper, Star, Utensils, Beer, Sparkles } from "lucide-react";
+import { ChevronDown, Music, Mic, PartyPopper, Star, Utensils, Beer, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
 import FadeIn from "@/components/FadeIn";
 import SectionHeading from "@/components/SectionHeading";
 import heroBg from "@/assets/hero-bg.jpg";
-import patio from "@/assets/patio.jpg";
+import barPatio from "@/assets/Bar Patio.webp";
 import bar from "@/assets/bar.jpg";
-import cocktails from "@/assets/cocktails.jpg";
+import whiskey from "@/assets/Whiskey.webp";
 import foodBurger from "@/assets/food-burger.jpg";
-import foodSteak from "@/assets/food-steak.jpg";
 import eventsMusic from "@/assets/events-music.jpg";
 import karaoke from "@/assets/karaoke.jpg";
-import golfSim from "@/assets/golf-sim.jpg";
 import privateEvents from "@/assets/private-events.jpg";
+import {
+  ORDER_ONLINE_URL,
+  HOURS,
+  OPENING_HOURS_SPEC,
+  ADDRESS_LINE_1,
+  CITY_STATE_ZIP,
+  MAPS_EMBED_URL,
+} from "@/lib/siteInfo";
 
 const experienceBlocks = [
-  { title: "Oasis Patio Bar", desc: "The largest and most beautiful bar on the lake.", img: patio, link: "/oasis-patio-bar" },
+  { title: "Oasis Patio Bar", desc: "The largest and most beautiful bar on the lake.", img: barPatio, link: "/oasis-patio-bar" },
   { title: "Patriot Bar", desc: "Honoring our service men and women.", img: bar, link: "/patriot-bar" },
-  { title: "Craft Cocktails", desc: "Our mixologists don't pour drinks. They create moments.", img: cocktails, link: "/menu" },
+  { title: "Craft Cocktails", desc: "Our mixologists don't pour drinks. They create moments.", img: whiskey, link: "/menu" },
 ];
 
 const eventCards = [
   { title: "Live Music", sub: "Friday & Saturday", img: eventsMusic, icon: Music, link: "/live-music" },
   { title: "Themed Night Karaoke", sub: "Thursday", img: karaoke, icon: Mic, link: "/karaoke-night" },
-  { title: "Golf Simulator Room", sub: "Private bookings available", img: golfSim, icon: Target, link: "/golf-simulator" },
   { title: "Private Events", sub: "Parties & Celebrations", img: privateEvents, icon: PartyPopper, link: "/catering" },
 ];
 
@@ -33,16 +38,6 @@ const signatureDishes = [
   { name: "Brisket Jam Burger", desc: "Smoked brisket, rich bacon jam, melted cheddar, and roasted garlic aioli.", price: "$18" },
   { name: "Queso Gone Wild", desc: "Smoked brisket folded into creamy queso with pico de gallo and jalapeños.", price: "$14" },
   { name: "Cinnamon Crunch Cake", desc: "Our legendary dessert. Sweet, crunchy, and absolutely addictive.", price: "$10" },
-];
-
-const hours = [
-  ["Monday", "5pm – 9pm"],
-  ["Tuesday", "Closed"],
-  ["Wednesday", "5pm – 9pm"],
-  ["Thursday", "5pm – 9pm"],
-  ["Friday", "5pm – 10pm"],
-  ["Saturday", "11am – 10pm"],
-  ["Sunday", "11am – 8pm"],
 ];
 
 const Index = () => {
@@ -59,7 +54,7 @@ const Index = () => {
             image: heroBg,
             address: {
               "@type": "PostalAddress",
-              streetAddress: "456 Gun Barrel Ln",
+              streetAddress: ADDRESS_LINE_1,
               addressLocality: "Gun Barrel City",
               addressRegion: "TX",
               postalCode: "75156",
@@ -67,14 +62,7 @@ const Index = () => {
             telephone: "+19039107666",
             servesCuisine: "American",
             priceRange: "$$",
-            openingHoursSpecification: [
-              { dayOfWeek: "Monday", opens: "17:00", closes: "21:00" },
-              { dayOfWeek: "Wednesday", opens: "17:00", closes: "21:00" },
-              { dayOfWeek: "Thursday", opens: "17:00", closes: "21:00" },
-              { dayOfWeek: "Friday", opens: "17:00", closes: "22:00" },
-              { dayOfWeek: "Saturday", opens: "11:00", closes: "22:00" },
-              { dayOfWeek: "Sunday", opens: "11:00", closes: "20:00" },
-            ],
+            openingHoursSpecification: OPENING_HOURS_SPEC,
           }),
         }}
       />
@@ -118,7 +106,9 @@ const Index = () => {
               Reserve a Table
             </Link>
             <a
-              href="#order"
+              href={ORDER_ONLINE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-8 py-4 text-sm font-bold uppercase tracking-widest border-2 border-primary text-primary rounded-lg hover:bg-primary hover:text-primary-foreground transition-all duration-300"
             >
               Order Online
@@ -156,7 +146,6 @@ const Index = () => {
                   { icon: Beer, text: "Largest Bar on Cedar Creek Lake" },
                   { icon: Music, text: "Live Music Friday & Saturday" },
                   { icon: Mic, text: "Themed Night Karaoke Thursday" },
-                  { icon: Target, text: "Private Golf Simulator Room" },
                   { icon: Sparkles, text: "Elevated Comfort Food + Crafted Cocktails" },
                 ].map((item) => (
                   <li key={item.text} className="flex items-center gap-3 py-2">
@@ -239,7 +228,7 @@ const Index = () => {
       {/* EVENTS */}
       <section id="events" className="section-padding bg-background">
         <div className="container-site">
-          <SectionHeading title="Always Something Happening" subtitle="Live music. Karaoke. Golf. Good times." />
+          <SectionHeading title="Always Something Happening" subtitle="Live music. Karaoke. Good times." />
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {eventCards.map((card, i) => (
               <FadeIn key={card.title} delay={i * 0.1}>
@@ -300,14 +289,14 @@ const Index = () => {
               <div>
                 <div className="mb-6">
                   <h3 className="font-display text-xl font-bold mb-2">Address</h3>
-                  <p className="text-muted-foreground">456 Gun Barrel Ln<br />Gun Barrel City, TX 75156</p>
+                  <p className="text-muted-foreground">{ADDRESS_LINE_1}<br />{CITY_STATE_ZIP}</p>
                   <a href="tel:9039107666" className="inline-block mt-2 text-primary font-semibold hover:underline">
                     (903) 910-7666
                   </a>
                 </div>
                 <div className="rounded-xl overflow-hidden aspect-[16/10] bg-card border border-border">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3370.8!2d-96.1!3d32.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDE4JzAwLjAiTiA5NsKwMDYnMDAuMCJX!5e0!3m2!1sen!2sus!4v1"
+                    src={MAPS_EMBED_URL}
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
@@ -323,7 +312,7 @@ const Index = () => {
               <div>
                 <h3 className="font-display text-xl font-bold mb-4">Hours</h3>
                 <div className="flex flex-col gap-3">
-                  {hours.map(([day, time]) => (
+                  {HOURS.map(([day, time]) => (
                     <div
                       key={day}
                       className="flex justify-between items-center py-2 border-b border-border last:border-0"
@@ -358,7 +347,7 @@ const Index = () => {
         <div className="container-site text-center relative z-10">
           <FadeIn>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold uppercase text-primary-foreground">
-              You're Table Is Waiting.
+              Your Table Is Waiting.
             </h2>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -368,7 +357,9 @@ const Index = () => {
                 Reserve Now
               </Link>
               <a
-                href="#order"
+                href={ORDER_ONLINE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-8 py-4 text-sm font-bold uppercase tracking-widest border-2 border-primary-foreground text-primary-foreground rounded-lg hover:bg-primary-foreground hover:text-primary transition-all"
               >
                 Order Online

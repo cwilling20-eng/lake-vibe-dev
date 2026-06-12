@@ -16,7 +16,6 @@ const Catering = lazy(() => import("./pages/Catering"));
 const Contact = lazy(() => import("./pages/Contact"));
 const LiveMusic = lazy(() => import("./pages/LiveMusic"));
 const KaraokeNight = lazy(() => import("./pages/KaraokeNight"));
-const GolfSimulator = lazy(() => import("./pages/GolfSimulator"));
 const OasisPatioBar = lazy(() => import("./pages/OasisPatioBar"));
 const PatriotBar = lazy(() => import("./pages/PatriotBar"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -48,7 +47,6 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/live-music" element={<LiveMusic />} />
             <Route path="/karaoke-night" element={<KaraokeNight />} />
-            <Route path="/golf-simulator" element={<GolfSimulator />} />
             <Route path="/oasis-patio-bar" element={<OasisPatioBar />} />
             <Route path="/patriot-bar" element={<PatriotBar />} />
             <Route path="*" element={<NotFound />} />

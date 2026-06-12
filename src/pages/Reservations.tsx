@@ -1,10 +1,27 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import FadeIn from "@/components/FadeIn";
 import { Phone } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 
+const TOAST_RESERVE_SCRIPT = "https://toast.app/scripts/widgets/reserve.js";
+const TOAST_RESTAURANT_GUID = "705f52d9-b5cb-499f-9046-a75d820a8c85";
+
 const Reservations = () => {
+  // Load the Toast reservations widget. The script reads data-restaurant-guid
+  // and renders into #toast-booking-widget.
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = TOAST_RESERVE_SCRIPT;
+    script.async = true;
+    script.setAttribute("data-restaurant-guid", TOAST_RESTAURANT_GUID);
+    document.body.appendChild(script);
+    return () => {
+      script.remove();
+    };
+  }, []);
+
   return (
     <Layout>
       <section className="relative min-h-[50vh] flex items-center justify-center">
@@ -23,18 +40,17 @@ const Reservations = () => {
       <section className="section-padding bg-background">
         <div className="container-site max-w-2xl">
           <FadeIn>
-            <div className="bg-card rounded-xl p-8 border border-border text-center">
-              <h2 className="text-2xl font-display font-bold mb-4">Reservation Platform Coming Soon</h2>
-              <p className="text-muted-foreground mb-6">
-                Our online reservation system is being set up. In the meantime, give us a call to reserve your spot.
+            <div className="bg-card rounded-xl p-6 md:p-8 border border-border">
+              <div id="toast-booking-widget" />
+              <p className="mt-6 text-center text-sm text-muted-foreground">
+                Trouble booking online?{" "}
+                <a
+                  href="tel:9039107666"
+                  className="inline-flex items-center gap-1 text-primary font-semibold hover:underline"
+                >
+                  <Phone size={14} /> (903) 910-7666
+                </a>
               </p>
-              <a
-                href="tel:9039107666"
-                className="inline-flex items-center gap-2 px-8 py-4 gold-gradient text-primary-foreground text-sm font-bold uppercase tracking-widest rounded-lg gold-glow-hover hover:scale-105 transition-all"
-              >
-                <Phone size={18} />
-                (903) 910-7666
-              </a>
             </div>
           </FadeIn>
           <FadeIn delay={0.2}>

@@ -2,10 +2,9 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import FadeIn from "@/components/FadeIn";
 import SectionHeading from "@/components/SectionHeading";
-import { Music, Mic, Target, PartyPopper } from "lucide-react";
+import { Music, Mic, PartyPopper } from "lucide-react";
 import eventsMusic from "@/assets/events-music.jpg";
 import karaoke from "@/assets/karaoke.jpg";
-import golfSim from "@/assets/golf-sim.jpg";
 import privateEventsImg from "@/assets/private-events.jpg";
 
 const events = [
@@ -26,14 +25,6 @@ const events = [
     link: "/karaoke-night",
   },
   {
-    title: "Golf Simulator Room",
-    when: "Available for private booking",
-    desc: "Tee off without leaving the bar. Our private golf sim room is perfect for groups, parties, or just flexing your swing.",
-    img: golfSim,
-    icon: Target,
-    link: "/golf-simulator",
-  },
-  {
     title: "Private Events & Parties",
     when: "Book anytime",
     desc: "Birthdays, corporate events, lake celebrations — we'll handle the food, drinks, and vibes. You just show up.",
@@ -52,7 +43,7 @@ const Events = () => {
             <h1 className="text-4xl md:text-6xl font-display font-bold uppercase">
               Always Something <span className="gold-gradient-text">Happening</span>
             </h1>
-            <p className="mt-4 text-muted-foreground text-lg">Live music. Karaoke. Golf. Good times.</p>
+            <p className="mt-4 text-muted-foreground text-lg">Live music. Karaoke. Good times.</p>
           </FadeIn>
         </div>
       </section>

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Clock } from "lucide-react";
+import { MapPin, Phone, Clock, Facebook } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { HOURS, ADDRESS_LINE_1, CITY_STATE_ZIP } from "@/lib/siteInfo";
 
 const Footer = () => {
   return (
@@ -13,6 +14,15 @@ const Footer = () => {
             <p className="text-muted-foreground text-sm leading-relaxed">
               Cedar Creek Lake's go-to spot for elevated comfort food, handcrafted cocktails, and unforgettable nights.
             </p>
+            <a
+              href="https://www.facebook.com/ElementsBy456"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Elements by 456 on Facebook"
+              className="mt-4 inline-flex items-center justify-center w-10 h-10 rounded-full border border-border text-primary hover:bg-primary hover:text-primary-foreground transition-all"
+            >
+              <Facebook size={18} />
+            </a>
           </div>
 
           {/* Quick Links */}
@@ -44,7 +54,7 @@ const Footer = () => {
             <div className="flex flex-col gap-3 text-sm text-muted-foreground">
               <div className="flex items-start gap-2">
                 <MapPin size={16} className="text-primary mt-0.5 flex-shrink-0" />
-                <span>456 Gun Barrel Ln<br />Gun Barrel City, TX 75156</span>
+                <span>{ADDRESS_LINE_1}<br />{CITY_STATE_ZIP}</span>
               </div>
               <a href="tel:9039107666" className="flex items-center gap-2 hover:text-primary transition-colors">
                 <Phone size={16} className="text-primary flex-shrink-0" />
@@ -61,18 +71,10 @@ const Footer = () => {
                 <Clock size={16} className="text-primary flex-shrink-0" />
                 <span className="font-medium text-foreground">Weekly Schedule</span>
               </div>
-              {[
-                ["Monday", "5pm – 9pm"],
-                ["Tuesday", "Closed"],
-                ["Wednesday", "5pm – 9pm"],
-                ["Thursday", "5pm – 9pm"],
-                ["Friday", "5pm – 10pm"],
-                ["Saturday", "11am – 10pm"],
-                ["Sunday", "11am – 8pm"],
-              ].map(([day, hours]) => (
+              {HOURS.map(([day, time]) => (
                 <div key={day} className="flex justify-between">
                   <span>{day}</span>
-                  <span className={hours === "Closed" ? "text-destructive" : ""}>{hours}</span>
+                  <span className={time === "Closed" ? "text-destructive" : ""}>{time}</span>
                 </div>
               ))}
             </div>

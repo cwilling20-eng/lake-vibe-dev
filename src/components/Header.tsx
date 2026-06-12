@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { ORDER_ONLINE_URL } from "@/lib/siteInfo";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -64,7 +65,9 @@ const Header = () => {
             Reserve Table
           </Link>
           <a
-            href="#order"
+            href={ORDER_ONLINE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-5 py-2.5 text-sm font-semibold uppercase tracking-wider gold-gradient text-primary-foreground rounded-lg hover:opacity-90 transition-all gold-glow-hover"
           >
             Order Online
@@ -104,7 +107,9 @@ const Header = () => {
                 Reserve a Table
               </Link>
               <a
-                href="#order"
+                href={ORDER_ONLINE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-center px-5 py-3 text-sm font-semibold uppercase tracking-wider gold-gradient text-primary-foreground rounded-lg"
               >
                 Order Online

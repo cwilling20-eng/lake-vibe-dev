@@ -2,14 +2,40 @@ import { useState } from "react";
 import Layout from "@/components/Layout";
 import FadeIn from "@/components/FadeIn";
 import { MapPin, Phone, Clock } from "lucide-react";
+import { HOURS, ADDRESS_LINE_1, CITY_STATE_ZIP, MAPS_EMBED_URL } from "@/lib/siteInfo";
+
+// Web3Forms access key — create one for elementsby456@gmail.com at
+// https://web3forms.com. Submissions are delivered to that inbox; the key
+// (not the recipient address) determines where the email goes.
+const WEB3FORMS_ACCESS_KEY = "53b0027f-d727-48e1-8cf9-0eb7b6f49123";
+
+type Status = "idle" | "submitting" | "success" | "error";
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setStatus("submitting");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: "New message from the Elements by 456 website",
+          from_name: "Elements by 456 Website",
+          name: form.name,
+          email: form.email,
+          message: form.message,
+        }),
+      });
+      const data = await res.json();
+      setStatus(data.success ? "success" : "error");
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -28,10 +54,10 @@ const Contact = () => {
         <div className="container-site">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <FadeIn direction="left">
-              {submitted ? (
+              {status === "success" ? (
                 <div className="p-8 bg-card rounded-xl border border-primary/30 text-center">
                   <h3 className="text-xl font-display font-bold text-primary">Message Sent!</h3>
-                  <p className="mt-2 text-muted-foreground">We'll be in touch soon.</p>
+                  <p className="mt-2 text-muted-foreground">Thanks for reaching out — we'll be in touch soon.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -61,11 +87,17 @@ const Contact = () => {
                       className="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors resize-none"
                     />
                   </div>
+                  {status === "error" && (
+                    <p className="text-sm text-destructive">
+                      Something went wrong. Please try again, or call us at (903) 910-7666.
+                    </p>
+                  )}
                   <button
                     type="submit"
-                    className="mt-2 px-8 py-4 gold-gradient text-primary-foreground text-sm font-bold uppercase tracking-widest rounded-lg gold-glow-hover hover:scale-105 transition-all"
+                    disabled={status === "submitting"}
+                    className="mt-2 px-8 py-4 gold-gradient text-primary-foreground text-sm font-bold uppercase tracking-widest rounded-lg gold-glow-hover hover:scale-105 transition-all disabled:opacity-60 disabled:hover:scale-100"
                   >
-                    Send Message
+                    {status === "submitting" ? "Sending…" : "Send Message"}
                   </button>
                 </form>
               )}
@@ -78,7 +110,7 @@ const Contact = () => {
                     <MapPin size={18} className="text-primary" />
                     <h3 className="font-display text-lg font-bold">Address</h3>
                   </div>
-                  <p className="text-muted-foreground ml-7">456 Gun Barrel Ln<br />Gun Barrel City, TX 75156</p>
+                  <p className="text-muted-foreground ml-7">{ADDRESS_LINE_1}<br />{CITY_STATE_ZIP}</p>
                 </div>
                 <div>
                   <div className="flex items-center gap-2 mb-2">
@@ -97,10 +129,7 @@ const Contact = () => {
                     <h3 className="font-display text-lg font-bold">Hours</h3>
                   </div>
                   <div className="flex flex-col gap-2 ml-7 text-sm text-muted-foreground">
-                    {[
-                      ["Monday", "5pm – 9pm"], ["Tuesday", "Closed"], ["Wednesday", "5pm – 9pm"],
-                      ["Thursday", "5pm – 9pm"], ["Friday", "5pm – 10pm"], ["Saturday", "11am – 10pm"], ["Sunday", "11am – 8pm"],
-                    ].map(([day, time]) => (
+                    {HOURS.map(([day, time]) => (
                       <div key={day} className="flex justify-between">
                         <span>{day}</span>
                         <span className={time === "Closed" ? "text-destructive" : ""}>{time}</span>
@@ -110,8 +139,8 @@ const Contact = () => {
                 </div>
                 <div className="rounded-xl overflow-hidden aspect-video bg-card border border-border">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3370.8!2d-96.1!3d32.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDE4JzAwLjAiTiA5NsKwMDYnMDAuMCJX!5e0!3m2!1sen!2sus!4v1"
-                    width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Map"
+                    src={MAPS_EMBED_URL}
+                    width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Elements by 456 Location"
                   />
                 </div>
               </div>
