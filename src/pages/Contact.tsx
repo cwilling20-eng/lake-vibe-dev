@@ -3,11 +3,7 @@ import Layout from "@/components/Layout";
 import FadeIn from "@/components/FadeIn";
 import { MapPin, Phone, Clock } from "lucide-react";
 import { HOURS, ADDRESS_LINE_1, CITY_STATE_ZIP, MAPS_EMBED_URL } from "@/lib/siteInfo";
-
-// Web3Forms access key — create one for elementsby456@gmail.com at
-// https://web3forms.com. Submissions are delivered to that inbox; the key
-// (not the recipient address) determines where the email goes.
-const WEB3FORMS_ACCESS_KEY = "53b0027f-d727-48e1-8cf9-0eb7b6f49123";
+import { submitWeb3Form } from "@/lib/web3forms";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -19,20 +15,11 @@ const Contact = () => {
     e.preventDefault();
     setStatus("submitting");
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
-          subject: "New message from the Elements by 456 website",
-          from_name: "Elements by 456 Website",
-          name: form.name,
-          email: form.email,
-          message: form.message,
-        }),
-      });
-      const data = await res.json();
-      setStatus(data.success ? "success" : "error");
+      const ok = await submitWeb3Form(
+        { name: form.name, email: form.email, message: form.message },
+        "New message from the Elements by 456 website",
+      );
+      setStatus(ok ? "success" : "error");
     } catch {
       setStatus("error");
     }

@@ -2,15 +2,34 @@ import { useState } from "react";
 import Layout from "@/components/Layout";
 import FadeIn from "@/components/FadeIn";
 import SectionHeading from "@/components/SectionHeading";
+import { submitWeb3Form } from "@/lib/web3forms";
 import privateEvents from "@/assets/private-events.jpg";
+
+type Status = "idle" | "submitting" | "success" | "error";
 
 const Catering = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", date: "", guests: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setStatus("submitting");
+    try {
+      const ok = await submitWeb3Form(
+        {
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          event_date: form.date,
+          guest_count: form.guests,
+          message: form.message,
+        },
+        "Catering Inquiry – Elements by 456",
+      );
+      setStatus(ok ? "success" : "error");
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -48,7 +67,7 @@ const Catering = () => {
           <FadeIn>
             <div className="max-w-xl mx-auto">
               <h2 className="text-2xl font-display font-bold text-center mb-8">Request a Booking</h2>
-              {submitted ? (
+              {status === "success" ? (
                 <div className="text-center p-8 bg-card rounded-xl border border-primary/30">
                   <h3 className="text-xl font-display font-bold text-primary">Request Received!</h3>
                   <p className="mt-2 text-muted-foreground">We'll get back to you within 24 hours.</p>
@@ -82,11 +101,17 @@ const Catering = () => {
                       className="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors resize-none"
                     />
                   </div>
+                  {status === "error" && (
+                    <p className="text-sm text-destructive">
+                      Something went wrong. Please try again, or call us at (903) 910-7666.
+                    </p>
+                  )}
                   <button
                     type="submit"
-                    className="mt-2 px-8 py-4 gold-gradient text-primary-foreground text-sm font-bold uppercase tracking-widest rounded-lg gold-glow-hover hover:scale-105 transition-all"
+                    disabled={status === "submitting"}
+                    className="mt-2 px-8 py-4 gold-gradient text-primary-foreground text-sm font-bold uppercase tracking-widest rounded-lg gold-glow-hover hover:scale-105 transition-all disabled:opacity-60 disabled:hover:scale-100"
                   >
-                    Submit Request
+                    {status === "submitting" ? "Sending…" : "Submit Request"}
                   </button>
                 </form>
               )}
