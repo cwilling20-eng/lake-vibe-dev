@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import FadeIn from "@/components/FadeIn";
 import { Music, Mic, PartyPopper } from "lucide-react";
-import eventsMusic from "@/assets/events-music.jpg";
-import privateEventsImg from "@/assets/private-events.jpg";
+import elementsLiveMusic from "@/assets/Elements Live Music.webp";
+import elementsPrivateEvents from "@/assets/Elements Private Events.webp";
 import karaokeFlyer from "@/assets/686541286_122145158900414446_7514774014079256357_n.webp";
 import djToriFlyer from "@/assets/704427214_27222040184152194_368634848445025664_n.webp";
 
@@ -30,7 +30,7 @@ const events = [
     title: "Live Music",
     when: "Every Saturday · 7–11pm · Last Saturday of the month: Comedy Show Night",
     desc: "Local bands and touring acts hit the stage under the stars. Grab a drink, grab a seat, and let the music move you.",
-    img: eventsMusic,
+    img: elementsLiveMusic,
     icon: Music,
     link: "/live-music",
     flyer: false,
@@ -39,7 +39,7 @@ const events = [
     title: "Private Events & Parties",
     when: "Book anytime",
     desc: "Birthdays, corporate events, lake celebrations — we'll handle the food, drinks, and vibes. You just show up.",
-    img: privateEventsImg,
+    img: elementsPrivateEvents,
     icon: PartyPopper,
     link: "/catering",
     flyer: false,

@@ -8,10 +8,10 @@ import heroBg from "@/assets/hero-bg.jpg";
 import barPatio from "@/assets/Bar Patio.webp";
 import bar from "@/assets/bar.jpg";
 import whiskey from "@/assets/Whiskey.webp";
-import foodBurger from "@/assets/food-burger.jpg";
-import eventsMusic from "@/assets/events-music.jpg";
+import elementsBurger from "@/assets/Elements Burger.webp";
+import elementsLiveMusic from "@/assets/Elements Live Music.webp";
 import karaoke from "@/assets/karaoke.jpg";
-import privateEvents from "@/assets/private-events.jpg";
+import elementsPrivateEvents from "@/assets/Elements Private Events.webp";
 import {
   ORDER_ONLINE_URL,
   HOURS,
@@ -28,9 +28,9 @@ const experienceBlocks = [
 ];
 
 const eventCards = [
-  { title: "Live Music", sub: "Friday & Saturday", img: eventsMusic, icon: Music, link: "/live-music" },
+  { title: "Live Music", sub: "Friday & Saturday", img: elementsLiveMusic, icon: Music, link: "/live-music" },
   { title: "Themed Night Karaoke", sub: "Thursday", img: karaoke, icon: Mic, link: "/karaoke-night" },
-  { title: "Private Events", sub: "Parties & Celebrations", img: privateEvents, icon: PartyPopper, link: "/catering" },
+  { title: "Private Events", sub: "Parties & Celebrations", img: elementsPrivateEvents, icon: PartyPopper, link: "/catering" },
 ];
 
 const signatureDishes = [
@@ -199,7 +199,7 @@ const Index = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <FadeIn direction="left">
               <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
-                <img src={foodBurger} alt="Signature burger" className="w-full h-full object-cover" loading="lazy" />
+                <img src={elementsBurger} alt="Elements signature plates" className="w-full h-full object-cover" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-r from-background/30 to-transparent" />
               </div>
             </FadeIn>

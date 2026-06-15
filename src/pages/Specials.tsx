@@ -50,8 +50,8 @@ const dealDays = [
 const featuredSpecials = [
   { name: "Steak & Shrimp", img: steakShrimp },
   { name: "Salmon", img: salmonSquared },
-  { name: "Salmon", img: grilledSalmon },
-  { name: "Steak Medallions", img: steakSquared },
+  { name: "Blackened Mahi Mahi", img: grilledSalmon },
+  { name: "Filet Mignon", img: steakSquared },
   { name: "Steak Medallions", img: steakMedallions },
   { name: "Pancakes", img: pancakes },
 ];
