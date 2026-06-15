@@ -28,7 +28,7 @@ const experienceBlocks = [
 ];
 
 const eventCards = [
-  { title: "Live Music", sub: "Friday & Saturday", img: elementsLiveMusic, icon: Music, link: "/live-music" },
+  { title: "Live Music", sub: "Saturday", img: elementsLiveMusic, icon: Music, link: "/live-music" },
   { title: "Themed Night Karaoke", sub: "Thursday", img: karaoke, icon: Mic, link: "/karaoke-night" },
   { title: "Private Events", sub: "Parties & Celebrations", img: elementsPrivateEvents, icon: PartyPopper, link: "/catering" },
 ];
