@@ -8,7 +8,7 @@ import heroBg from "@/assets/hero-bg.jpg";
 import barPatio from "@/assets/Bar Patio.webp";
 import bar from "@/assets/bar.jpg";
 import whiskey from "@/assets/Whiskey.webp";
-import elementsBurger from "@/assets/Elements Burger.webp";
+import steakShrimp from "@/assets/Steak and Shrimp.webp";
 import elementsLiveMusic from "@/assets/Elements Live Music.webp";
 import karaoke from "@/assets/karaoke.jpg";
 import elementsPrivateEvents from "@/assets/Elements Private Events.webp";
@@ -199,7 +199,7 @@ const Index = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <FadeIn direction="left">
               <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
-                <img src={elementsBurger} alt="Elements signature plates" className="w-full h-full object-cover" loading="lazy" />
+                <img src={steakShrimp} alt="Steak and shrimp" className="w-full h-full object-cover" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-r from-background/30 to-transparent" />
               </div>
             </FadeIn>
