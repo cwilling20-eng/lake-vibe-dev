@@ -27,7 +27,7 @@ export type Menus = Record<MealKey, MenuCategory[]>;
 // Until a real ID is set, fetchMenus() throws and the app keeps rendering the
 // committed seed (src/data/menu.json). See MENU-EDITING.md.
 // ---------------------------------------------------------------------------
-export const SHEET_ID = "REPLACE_WITH_SHEET_ID";
+export const SHEET_ID = "1WaNDIQkJ9vFsyYgW11miI2OXbCC9hWae";
 
 const SHEET_ID_PLACEHOLDER = "REPLACE_WITH_SHEET_ID";
 
