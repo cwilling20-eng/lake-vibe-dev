@@ -1,6 +1,6 @@
 import ICAL from "ical.js";
-import { categorizeEvent } from "./categorize";
-import type { SiteEvent } from "./types";
+import { categorizeEvent } from "./categorize.js";
+import type { SiteEvent } from "./types.js";
 
 // Google Calendar public ICS -> SiteEvent[].
 //

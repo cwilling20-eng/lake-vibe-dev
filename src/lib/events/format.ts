@@ -1,5 +1,5 @@
-import { CALENDAR_TIMEZONE } from "./calendar";
-import type { SiteEvent } from "./types";
+import { CALENDAR_TIMEZONE } from "./calendar.js";
+import type { SiteEvent } from "./types.js";
 
 // Display helpers. Everything renders in the venue's timezone regardless of
 // where the visitor is, so "7pm" always means 7pm in Gun Barrel City.

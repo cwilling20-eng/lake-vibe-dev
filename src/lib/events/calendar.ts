@@ -1,5 +1,5 @@
-import { parseIcsToEvents } from "./ics";
-import type { SiteEvent } from "./types";
+import { parseIcsToEvents } from "./ics.js";
+import type { SiteEvent } from "./types.js";
 
 // SINGLE SOURCE OF TRUTH for the events calendar. The client manages every
 // public event in this Google Calendar; the website reads it. It is a PUBLIC

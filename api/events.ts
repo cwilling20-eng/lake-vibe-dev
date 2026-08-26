@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { fetchCalendarEvents } from "../src/lib/events/calendar";
-import type { EventsResponse, SiteEvent } from "../src/lib/events/types";
+import { fetchCalendarEvents } from "../src/lib/events/calendar.js";
+import type { EventsResponse, SiteEvent } from "../src/lib/events/types.js";
 
 // GET /api/events
 //

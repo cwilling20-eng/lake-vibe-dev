@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
-import { categorizeEvent } from "./categorize";
-import { htmlToText, parseIcsToEvents } from "./ics";
-import { formatEventTime, formatEventDate, isOffsiteLocation } from "./format";
+import { categorizeEvent } from "./categorize.js";
+import { htmlToText, parseIcsToEvents } from "./ics.js";
+import { formatEventTime, formatEventDate, isOffsiteLocation } from "./format.js";
 
 // A trimmed, realistic slice of the client's Google Calendar export: the
 // VTIMEZONE Google emits, one weekly recurring event with an EXDATE and a

@@ -1,4 +1,4 @@
-import type { EventCategory } from "./types";
+import type { EventCategory } from "./types.js";
 
 // Centralized keyword categorization. The client's Google Calendar has no
 // category field, so we infer one from title + description. Order matters:
