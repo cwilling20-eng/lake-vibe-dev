@@ -1,37 +1,16 @@
-import { useState } from "react";
 import Layout from "@/components/Layout";
 import FadeIn from "@/components/FadeIn";
 import SectionHeading from "@/components/SectionHeading";
-import { submitWeb3Form } from "@/lib/web3forms";
+import GoogleFormEmbed from "@/components/GoogleFormEmbed";
 import privateEvents from "@/assets/private-events.jpg";
 
-type Status = "idle" | "submitting" | "success" | "error";
+// Client-managed Google Form. Questions and responses live in Google Forms —
+// the client edits the form there; nothing on the site needs to change.
+const CATERING_FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSdJaf3b8aUJ1rVwZnZjpS8OjayH1ATxfXcpMyA1vnEL9OQi3g/viewform?embedded=true";
+const CATERING_FORM_HEIGHT = 5373;
 
 const Catering = () => {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", date: "", guests: "", message: "" });
-  const [status, setStatus] = useState<Status>("idle");
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("submitting");
-    try {
-      const ok = await submitWeb3Form(
-        {
-          name: form.name,
-          email: form.email,
-          phone: form.phone,
-          event_date: form.date,
-          guest_count: form.guests,
-          message: form.message,
-        },
-        "Catering Inquiry – Elements by 456",
-      );
-      setStatus(ok ? "success" : "error");
-    } catch {
-      setStatus("error");
-    }
-  };
-
   return (
     <Layout>
       <section className="relative min-h-[50vh] flex items-center justify-center">
@@ -65,57 +44,21 @@ const Catering = () => {
           </div>
 
           <FadeIn>
-            <div className="max-w-xl mx-auto">
-              <h2 className="text-2xl font-display font-bold text-center mb-8">Request a Booking</h2>
-              {status === "success" ? (
-                <div className="text-center p-8 bg-card rounded-xl border border-primary/30">
-                  <h3 className="text-xl font-display font-bold text-primary">Request Received!</h3>
-                  <p className="mt-2 text-muted-foreground">We'll get back to you within 24 hours.</p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                  {[
-                    { key: "name", label: "Name", type: "text" },
-                    { key: "email", label: "Email", type: "email" },
-                    { key: "phone", label: "Phone", type: "tel" },
-                    { key: "date", label: "Event Date", type: "date" },
-                    { key: "guests", label: "Guest Count", type: "number" },
-                  ].map(({ key, label, type }) => (
-                    <div key={key}>
-                      <label className="block text-sm font-medium mb-1">{label}</label>
-                      <input
-                        type={type}
-                        required
-                        value={form[key as keyof typeof form]}
-                        onChange={(e) => setForm({ ...form, [key]: e.target.value })}
-                        className="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-                      />
-                    </div>
-                  ))}
-                  <div>
-                    <label className="block text-sm font-medium mb-1">Message</label>
-                    <textarea
-                      rows={4}
-                      value={form.message}
-                      onChange={(e) => setForm({ ...form, message: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors resize-none"
-                    />
-                  </div>
-                  {status === "error" && (
-                    <p className="text-sm text-destructive">
-                      Something went wrong. Please try again, or call us at (903) 910-7666.
-                    </p>
-                  )}
-                  <button
-                    type="submit"
-                    disabled={status === "submitting"}
-                    className="mt-2 px-8 py-4 gold-gradient text-primary-foreground text-sm font-bold uppercase tracking-widest rounded-lg gold-glow-hover hover:scale-105 transition-all disabled:opacity-60 disabled:hover:scale-100"
-                  >
-                    {status === "submitting" ? "Sending…" : "Submit Request"}
-                  </button>
-                </form>
-              )}
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-display font-bold uppercase">Request a Booking</h2>
+              <div className="mt-4 h-0.5 w-16 gold-gradient mx-auto" />
+              <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
+                Tell us about your event and we'll get back to you within 24 hours. Prefer to talk?{" "}
+                <a href="tel:9039107666" className="text-primary font-semibold hover:underline">
+                  (903) 910-7666
+                </a>
+              </p>
             </div>
+            <GoogleFormEmbed
+              src={CATERING_FORM_URL}
+              title="Catering and private event inquiry form"
+              height={CATERING_FORM_HEIGHT}
+            />
           </FadeIn>
         </div>
       </section>

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
 import FadeIn from "@/components/FadeIn";
 import SectionHeading from "@/components/SectionHeading";
+import UpcomingEvents from "@/components/UpcomingEvents";
 import heroBg from "@/assets/hero-bg.jpg";
 import barPatio from "@/assets/Bar Patio.webp";
 import bar from "@/assets/bar.jpg";
@@ -28,8 +29,8 @@ const experienceBlocks = [
 ];
 
 const eventCards = [
-  { title: "Live Music", sub: "Saturday", img: elementsLiveMusic, icon: Music, link: "/live-music" },
-  { title: "Themed Night Karaoke", sub: "Thursday", img: karaoke, icon: Mic, link: "/karaoke-night" },
+  { title: "Live Music", sub: "On the patio stage", img: elementsLiveMusic, icon: Music, link: "/live-music" },
+  { title: "Karaoke Night", sub: "Take the mic", img: karaoke, icon: Mic, link: "/karaoke-night" },
   { title: "Private Events", sub: "Parties & Celebrations", img: elementsPrivateEvents, icon: PartyPopper, link: "/catering" },
 ];
 
@@ -144,8 +145,8 @@ const Index = () => {
                 {[
                   { icon: Utensils, text: "Indoor + Patio Dining" },
                   { icon: Beer, text: "Largest Bar on Cedar Creek Lake" },
-                  { icon: Music, text: "Live Music Friday & Saturday" },
-                  { icon: Mic, text: "Themed Night Karaoke Thursday" },
+                  { icon: Music, text: "Live Music & Comedy Nights" },
+                  { icon: Mic, text: "Karaoke Nights" },
                   { icon: Sparkles, text: "Elevated Comfort Food + Crafted Cocktails" },
                 ].map((item) => (
                   <li key={item.text} className="flex items-center gap-3 py-2">
@@ -228,7 +229,19 @@ const Index = () => {
       {/* EVENTS */}
       <section id="events" className="section-padding bg-background">
         <div className="container-site">
-          <SectionHeading title="Always Something Happening" subtitle="Live music. Karaoke. Good times." />
+          <SectionHeading title="Always Something Happening" subtitle="Up next on the calendar." />
+          {/* Next 3 events — live from the client's Google Calendar (no hardcoded dates here) */}
+          <UpcomingEvents limit={3} variant="compact" columns={3} />
+          <FadeIn>
+            <div className="mt-8 mb-16 text-center">
+              <Link
+                to="/events"
+                className="inline-block px-8 py-4 text-sm font-bold uppercase tracking-widest border border-primary text-primary rounded-lg hover:bg-primary hover:text-primary-foreground transition-all"
+              >
+                See All Events
+              </Link>
+            </div>
+          </FadeIn>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {eventCards.map((card, i) => (
               <FadeIn key={card.title} delay={i * 0.1}>

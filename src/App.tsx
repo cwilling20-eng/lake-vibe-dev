@@ -18,6 +18,8 @@ const LiveMusic = lazy(() => import("./pages/LiveMusic"));
 const KaraokeNight = lazy(() => import("./pages/KaraokeNight"));
 const OasisPatioBar = lazy(() => import("./pages/OasisPatioBar"));
 const PatriotBar = lazy(() => import("./pages/PatriotBar"));
+const EntertainmentInquiry = lazy(() => import("./pages/EntertainmentInquiry"));
+const Careers = lazy(() => import("./pages/Careers"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -49,6 +51,8 @@ const App = () => (
             <Route path="/karaoke-night" element={<KaraokeNight />} />
             <Route path="/oasis-patio-bar" element={<OasisPatioBar />} />
             <Route path="/patriot-bar" element={<PatriotBar />} />
+            <Route path="/entertainment-inquiry" element={<EntertainmentInquiry />} />
+            <Route path="/careers" element={<Careers />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

@@ -1,113 +1,109 @@
 import { Link } from "react-router-dom";
+import { CalendarDays } from "lucide-react";
 import Layout from "@/components/Layout";
 import FadeIn from "@/components/FadeIn";
-import { Music, Mic, PartyPopper } from "lucide-react";
+import SectionHeading from "@/components/SectionHeading";
+import UpcomingEvents from "@/components/UpcomingEvents";
+import { CALENDAR_PUBLIC_URL } from "@/lib/events/calendar";
 import elementsLiveMusic from "@/assets/Elements Live Music.webp";
-import elementsPrivateEvents from "@/assets/Elements Private Events.webp";
-import karaokeFlyer from "@/assets/686541286_122145158900414446_7514774014079256357_n.webp";
-import djToriFlyer from "@/assets/704427214_27222040184152194_368634848445025664_n.webp";
 
-const events = [
-  {
-    title: "Themed Night Karaoke",
-    when: "Every Thursday · 6–9pm",
-    desc: "Take the mic. Own the room. From country classics to 90s hip-hop — it's your stage. Plus $12 street tacos and $5 margaritas all night.",
-    img: karaokeFlyer,
-    icon: Mic,
-    link: "/karaoke-night",
-    flyer: true,
-  },
-  {
-    title: "DJ Tori",
-    when: "Every Friday · 7–11pm",
-    desc: "DJ Tori takes over every Friday night — top hits, great vibes, and unforgettable nights on Cedar Creek Lake.",
-    img: djToriFlyer,
-    icon: Music,
-    link: "/reservations",
-    flyer: true,
-  },
-  {
-    title: "Live Music",
-    when: "Every Saturday · 7–11pm · Last Saturday of the month: Comedy Show Night",
-    desc: "Local bands and touring acts hit the stage under the stars. Grab a drink, grab a seat, and let the music move you.",
-    img: elementsLiveMusic,
-    icon: Music,
-    link: "/live-music",
-    flyer: false,
-  },
-  {
-    title: "Private Events & Parties",
-    when: "Book anytime",
-    desc: "Birthdays, corporate events, lake celebrations — we'll handle the food, drinks, and vibes. You just show up.",
-    img: elementsPrivateEvents,
-    icon: PartyPopper,
-    link: "/catering",
-    flyer: false,
-  },
-];
-
+// Every event on this page comes from the client's Google Calendar via
+// /api/events. Nothing event-related is hardcoded here.
 const Events = () => {
   return (
     <Layout>
-      <section className="pt-28 pb-8 bg-background">
-        <div className="container-site text-center">
+      {/* Hero */}
+      <section className="relative min-h-[50vh] flex items-center justify-center">
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${elementsLiveMusic})` }} />
+        <div className="absolute inset-0 overlay-dark-heavy" />
+        <div className="relative z-10 text-center container-site pt-20">
           <FadeIn>
             <h1 className="text-4xl md:text-6xl font-display font-bold uppercase">
               Always Something <span className="gold-gradient-text">Happening</span>
             </h1>
-            <p className="mt-4 text-muted-foreground text-lg">Karaoke. DJ nights. Live music. Good times.</p>
+            <p className="mt-4 text-muted-foreground text-lg">Live music. Karaoke. Comedy. Good times.</p>
           </FadeIn>
         </div>
       </section>
 
+      {/* Upcoming events */}
       <section className="section-padding bg-background">
-        <div className="container-site flex flex-col gap-12">
-          {events.map((event, i) => (
-            <FadeIn key={event.title} delay={i * 0.1}>
-              <Link to={event.link} className="block group">
-                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 items-center ${i % 2 === 1 ? "lg:direction-rtl" : ""}`}>
-                  <div className={i % 2 === 1 ? "lg:order-2" : ""}>
-                    {event.flyer ? (
-                      // Portrait poster — contain (don't stretch), centered on a card panel.
-                      <div className="rounded-xl border border-border bg-card overflow-hidden flex items-center justify-center p-4">
-                        <img
-                          src={event.img}
-                          alt={event.title}
-                          className="max-h-[26rem] w-auto object-contain rounded-md transition-transform duration-300 group-hover:scale-[1.02]"
-                          loading="lazy"
-                        />
-                      </div>
-                    ) : (
-                      <img
-                        src={event.img}
-                        alt={event.title}
-                        className="w-full rounded-xl aspect-[16/10] object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                        loading="lazy"
-                      />
-                    )}
-                  </div>
-                  <div className={i % 2 === 1 ? "lg:order-1" : ""}>
-                    <div className="flex items-center gap-3 mb-3">
-                      <event.icon size={24} className="text-primary" />
-                      <h2 className="text-2xl md:text-3xl font-display font-bold group-hover:text-primary transition-colors">{event.title}</h2>
-                    </div>
-                    <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-3">{event.when}</p>
-                    <p className="text-muted-foreground text-lg leading-relaxed">{event.desc}</p>
-                  </div>
-                </div>
-              </Link>
-            </FadeIn>
-          ))}
+        <div className="container-site">
+          <SectionHeading
+            title="Upcoming Events"
+            subtitle="All times are local to Gun Barrel City. The calendar updates as new dates are added."
+          />
+          <UpcomingEvents
+            emptyTitle="No upcoming events posted yet."
+            emptyBody="We're always adding live music, karaoke, and comedy dates. Check back soon or follow us on Facebook."
+            linkToEvents={false}
+          />
+          <FadeIn>
+            <p className="mt-10 text-center text-sm text-muted-foreground">
+              <CalendarDays size={14} className="inline-block text-primary mr-1.5 -mt-0.5" aria-hidden="true" />
+              <a
+                href={CALENDAR_PUBLIC_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary font-semibold hover:underline"
+              >
+                Open the full calendar
+              </a>{" "}
+              to add any event to your own Google Calendar.
+            </p>
+          </FadeIn>
         </div>
       </section>
 
-      <section className="py-16 gold-gradient">
+      {/* Explore by type */}
+      <section className="section-padding bg-secondary">
+        <div className="container-site">
+          <SectionHeading title="Find Your Night" subtitle="Every kind of good time, all in one place." />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {[
+              { title: "Live Music", desc: "Local and touring acts on the patio stage.", link: "/live-music" },
+              { title: "Karaoke Nights", desc: "Take the mic. Own the room.", link: "/karaoke-night" },
+              { title: "Private Events & Parties", desc: "Birthdays, corporate events, lake celebrations — we handle the rest.", link: "/catering" },
+              { title: "Perform at Elements", desc: "Musicians, DJs, comedians — bring your act to the lake.", link: "/entertainment-inquiry" },
+            ].map((card, i) => (
+              <FadeIn key={card.title} delay={i * 0.1}>
+                <Link
+                  to={card.link}
+                  className="group block bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all h-full"
+                >
+                  <h3 className="text-xl font-display font-bold text-primary">{card.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{card.desc}</p>
+                  <span className="mt-4 inline-block text-xs font-semibold uppercase tracking-wider text-primary group-hover:underline">
+                    Learn more →
+                  </span>
+                </Link>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 md:py-20 gold-gradient">
         <div className="container-site text-center">
           <FadeIn>
-            <h2 className="text-3xl md:text-4xl font-display font-bold uppercase text-primary-foreground">Want to Host Your Event Here?</h2>
-            <Link to="/catering" className="mt-6 inline-block px-8 py-4 bg-background text-foreground text-sm font-bold uppercase tracking-widest rounded-lg hover:bg-background/90 transition-all">
-              Book a Private Event
-            </Link>
+            <h2 className="text-3xl md:text-4xl font-display font-bold uppercase text-primary-foreground">
+              Want to Host Your Event Here?
+            </h2>
+            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/catering"
+                className="px-8 py-4 text-sm font-bold uppercase tracking-widest bg-background text-foreground rounded-lg hover:bg-background/90 transition-all"
+              >
+                Book a Private Event
+              </Link>
+              <Link
+                to="/entertainment-inquiry"
+                className="px-8 py-4 text-sm font-bold uppercase tracking-widest border-2 border-primary-foreground text-primary-foreground rounded-lg hover:bg-primary-foreground hover:text-primary transition-all"
+              >
+                Interested in Performing?
+              </Link>
+            </div>
           </FadeIn>
         </div>
       </section>

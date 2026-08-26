@@ -75,8 +75,11 @@ const About = () => {
                 <h2 className="text-3xl md:text-4xl font-display font-bold uppercase">Our <span className="gold-gradient-text">Energy</span></h2>
                 <div className="mt-4 h-0.5 w-16 gold-gradient" />
                 <p className="mt-6 text-muted-foreground text-lg leading-relaxed">
-                  Live music every Friday and Saturday. Themed karaoke night on Thursdays. And an atmosphere that turns strangers into friends. This is what lake life is all about.
+                  Live music on the patio stage. Karaoke nights. Comedy shows. And an atmosphere that turns strangers into friends. This is what lake life is all about.
                 </p>
+                <Link to="/events" className="mt-6 inline-block text-primary font-semibold hover:underline">
+                  See what's coming up →
+                </Link>
               </div>
             </FadeIn>
           </div>

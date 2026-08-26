@@ -33,9 +33,11 @@ const Footer = () => {
                 { name: "Menu", path: "/menu" },
                 { name: "Reservations", path: "/reservations" },
                 { name: "Events", path: "/events" },
-                { name: "Catering", path: "/catering" },
+                { name: "Catering & Private Events", path: "/catering" },
                 { name: "About Us", path: "/about" },
                 { name: "Contact", path: "/contact" },
+                { name: "Perform at Elements", path: "/entertainment-inquiry" },
+                { name: "Join Our Team", path: "/careers" },
               ].map((link) => (
                 <Link
                   key={link.path}
