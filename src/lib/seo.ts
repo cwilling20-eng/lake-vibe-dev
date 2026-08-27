@@ -257,7 +257,7 @@ export const restaurantSchema = () => ({
   description: SITE.description,
   url: SITE.domain,
   logo: { "@type": "ImageObject", url: SITE.logo, width: 180, height: 180 },
-  image: SITE.ogImage,
+  image: [SITE.ogImage, `${SITE.domain}/elements_outside_bar.webp`, `${SITE.domain}/elements_inside_bar.webp`],
   telephone: SITE.phoneE164,
   address: {
     "@type": "PostalAddress",
@@ -369,6 +369,10 @@ export function headTagsFor(path: string): HeadTag[] {
   const url = abs(p.path);
   const tags: HeadTag[] = [
     { tag: "title", text: title },
+    // Homepage LCP: preload the hero photograph (only on /).
+    ...(p.path === "/"
+      ? [{ tag: "link", attrs: { rel: "preload", as: "image", href: `${SITE.domain}/elements_outside_bar.webp`.replace(SITE.domain, ""), type: "image/webp", fetchpriority: "high" } } as HeadTag]
+      : []),
     { tag: "meta", attrs: { name: "description", content: p.description } },
     { tag: "meta", attrs: { name: "robots", content: p.breadcrumb === "Not Found" ? "noindex, follow" : "index, follow" } },
     { tag: "link", attrs: { rel: "canonical", href: url } },

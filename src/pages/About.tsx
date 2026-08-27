@@ -5,8 +5,8 @@ import SectionHeading from "@/components/SectionHeading";
 import patio from "@/assets/patio.jpg";
 import bar from "@/assets/bar.jpg";
 import eventsMusic from "@/assets/events-music.jpg";
-// TODO(client asset): replace with the supplied Main Dining photograph when received.
-import mainDining from "@/assets/private-events.jpg";
+// Client-supplied interior photograph (public/, optimized WebP).
+const mainDining = "/elements_inside_bar.webp";
 
 const About = () => {
   return (
@@ -58,7 +58,7 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <FadeIn>
               <div className="rounded-xl overflow-hidden h-full">
-                <img src={mainDining} alt="Main dining room at Elements by 456" className="w-full aspect-[4/3] object-cover" loading="lazy" />
+                <img src={mainDining} alt="Main dining room and bar at Elements by 456 in Gun Barrel City" className="w-full aspect-[4/3] object-cover" loading="lazy" />
                 <div className="p-6 bg-card">
                   <h3 className="text-xl font-display font-bold text-primary">Main Dining</h3>
                   <p className="mt-2 text-muted-foreground">Our indoor dining room — sit-down service for brunch, midday, and dinner, and the setting for private parties and special occasions.</p>

@@ -60,6 +60,8 @@
 
   body {
     @apply bg-background text-foreground font-body antialiased;
+    /* FadeIn slides elements in from ±30px; clip so that never creates a sideways scroll on phones. */
+    overflow-x: clip;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -115,7 +117,7 @@
   /* Homepage hero: light enough to show off the patio garden, darkening only
      toward the bottom where the headline/CTAs sit. */
   .overlay-hero {
-    background: linear-gradient(180deg, rgba(11,11,11,0.12) 0%, rgba(11,11,11,0.22) 40%, rgba(11,11,11,0.62) 72%, rgba(11,11,11,0.92) 100%);
+    background: linear-gradient(180deg, rgba(11,11,11,0.28) 0%, rgba(11,11,11,0.30) 35%, rgba(11,11,11,0.66) 68%, rgba(11,11,11,0.94) 100%);
   }
 }
 

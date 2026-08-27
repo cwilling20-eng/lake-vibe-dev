@@ -7,10 +7,10 @@ import SectionHeading from "@/components/SectionHeading";
 import UpcomingEvents from "@/components/UpcomingEvents";
 import FaqSection from "@/components/FaqSection";
 import { HOME_FAQS } from "@/lib/seo";
-import heroBg from "@/assets/hero-bg.jpg";
 import barPatio from "@/assets/Bar Patio.webp";
-// TODO(client asset): replace with the supplied Main Dining photograph when received.
-import mainDining from "@/assets/private-events.jpg";
+// Client-supplied photography (public/, optimized WebP alongside the original PNGs).
+const HERO_IMG = "/elements_outside_bar.webp";
+const mainDining = "/elements_inside_bar.webp";
 import bar from "@/assets/bar.jpg";
 import whiskey from "@/assets/Whiskey.webp";
 import steakShrimp from "@/assets/Steak and Shrimp.webp";
@@ -27,7 +27,7 @@ import {
 } from "@/lib/siteInfo";
 
 const experienceBlocks = [
-  { title: "Main Dining", desc: "Sit-down dining from brunch through dinner in our indoor dining room.", img: mainDining, link: "/menu", alt: "Main dining room at Elements by 456" },
+  { title: "Main Dining", desc: "Sit-down dining from brunch through dinner in our indoor dining room.", img: mainDining, link: "/menu", alt: "Main dining room and bar at Elements by 456 in Gun Barrel City" },
   { title: "Oasis Patio Bar", desc: "The largest and most beautiful bar on the lake.", img: barPatio, link: "/oasis-patio-bar" },
   { title: "Patriot Bar", desc: "Honoring our service men and women.", img: bar, link: "/patriot-bar" },
   { title: "Craft Cocktails", desc: "Our mixologists don't pour drinks. They create moments.", img: whiskey, link: "/menu" },
@@ -52,8 +52,10 @@ const Index = () => {
       {/* HERO */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${heroBg})` }}
+          className="absolute inset-0 bg-cover bg-[position:center_62%]"
+          style={{ backgroundImage: `url(${HERO_IMG})` }}
+          role="img"
+          aria-label="The patio garden at Elements by 456 — shade sails, string lights, and lounge seating under the trees"
         />
         <div className="absolute inset-0 overlay-hero" />
         <div className="relative z-10 text-center container-site pt-24 md:pt-32 self-end pb-20 md:pb-28">

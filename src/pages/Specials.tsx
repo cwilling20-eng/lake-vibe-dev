@@ -11,29 +11,37 @@ import steakSquared from "@/assets/steak_squared.webp";
 import steakMedallions from "@/assets/Steak Medallions.webp";
 import pancakes from "@/assets/Pancakes.webp";
 
-// Evergreen restaurant deals. These are NOT calendar events — they're standing
-// food & drink specials the restaurant runs. Entertainment (who's playing,
-// which night) is pulled live from the Google Calendar further down.
-const standingDeals = [
+// Evergreen restaurant promotions. These are NOT calendar events — they're
+// standing food & drink specials. Entertainment (who's playing, which night)
+// is pulled live from the Google Calendar further down.
+//
+// Flyers are client-supplied artwork (public/, optimized WebP). The flyer
+// carries the detailed pricing; the copy stays to the verified core facts.
+const promos = [
   {
     title: "Happy Hour",
     when: "3–6pm, every day we're open",
     desc: "Drink deals at the largest bar on Cedar Creek Lake.",
     icon: Clock,
+    flyer: "/elements_happy_hour.webp",
+    flyerAlt: "Elements Happy Hour flyer — every day 3pm to 6pm, with $3, $6 and $9 drink and appetizer specials",
   },
   {
     title: "Taco Thursday & $5 Margaritas",
     when: "Every Thursday",
     desc: "A weekly Elements social — tacos and $5 margaritas every Thursday.",
     icon: Utensils,
-  },
-  {
-    title: "Burger Monday",
-    when: "Mondays · Dinner only",
-    desc: "$1 off any burger — and another $1 off when you add fries.",
-    icon: Beef,
+    flyer: "/taco_thursday.webp",
+    flyerAlt: "Taco Thursday flyer — karaoke plus $12 tacos and $5 margaritas every Thursday at Elements, tortillas made in house",
   },
 ];
+
+const burgerMonday = {
+  title: "Burger Monday",
+  when: "Mondays · Dinner only",
+  desc: "$1 off any burger — and another $1 off when you add fries.",
+  icon: Beef,
+};
 
 // Rotating chef features — different plates, name-only captions.
 const featuredSpecials = [
@@ -77,20 +85,47 @@ const Specials = () => {
       <section className="section-padding bg-background">
         <div className="container-site">
           <SectionHeading title="Weekly Specials" subtitle="Here's what's going down when we're open." />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {standingDeals.map((deal, i) => (
-              <FadeIn key={deal.title} delay={i * 0.1}>
-                <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/30 transition-colors h-full">
-                  <div className="flex items-center gap-2 mb-3 text-primary">
-                    <deal.icon size={18} aria-hidden="true" />
-                    <span className="text-xs font-semibold uppercase tracking-wider">{deal.when}</span>
+
+          {/* Promo + flyer pairs: side-by-side from sm, stacked on phones */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+            {promos.map((p, i) => (
+              <FadeIn key={p.title} delay={i * 0.1}>
+                <article className="h-full bg-card rounded-xl border border-border hover:border-primary/30 transition-colors overflow-hidden flex flex-col sm:flex-row">
+                  <div className="p-6 md:p-8 flex-1 flex flex-col justify-center">
+                    <div className="flex items-center gap-2 mb-3 text-primary">
+                      <p.icon size={18} aria-hidden="true" />
+                      <span className="text-xs font-semibold uppercase tracking-wider">{p.when}</span>
+                    </div>
+                    <h3 className="text-2xl font-display font-bold">{p.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
                   </div>
-                  <h3 className="text-xl font-display font-bold">{deal.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{deal.desc}</p>
-                </div>
+                  <div className="sm:w-56 md:w-64 flex-shrink-0 bg-background/40 p-4 sm:p-3 flex items-center justify-center">
+                    <img
+                      src={p.flyer}
+                      alt={p.flyerAlt}
+                      className="w-full max-w-[280px] sm:max-w-none h-auto rounded-lg shadow-lg"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </article>
               </FadeIn>
             ))}
           </div>
+
+          {/* Burger Monday — text-only promo */}
+          <FadeIn delay={0.2}>
+            <div className="mt-6 lg:mt-8 bg-card rounded-xl p-6 border border-border hover:border-primary/30 transition-colors flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-8">
+              <div className="flex items-center gap-2 text-primary sm:w-56 flex-shrink-0">
+                <burgerMonday.icon size={18} aria-hidden="true" />
+                <span className="text-xs font-semibold uppercase tracking-wider">{burgerMonday.when}</span>
+              </div>
+              <div>
+                <h3 className="text-xl font-display font-bold">{burgerMonday.title}</h3>
+                <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{burgerMonday.desc}</p>
+              </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
