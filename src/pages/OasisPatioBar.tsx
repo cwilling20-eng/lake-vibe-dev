@@ -25,7 +25,10 @@ const OasisPatioBar = () => {
             <h1 className="text-4xl md:text-6xl font-display font-bold uppercase">
               The Oasis <span className="gold-gradient-text">Patio Bar</span>
             </h1>
-            <p className="mt-4 text-muted-foreground text-lg">The largest and most beautiful bar on Cedar Creek Lake.</p>
+            <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto">
+              The largest and most beautiful bar on Cedar Creek Lake. The Oasis Patio Bar at Elements by 456 in Gun
+              Barrel City, TX pairs panoramic lake views with signature cocktails and live music.
+            </p>
           </FadeIn>
         </div>
       </section>

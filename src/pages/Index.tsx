@@ -5,6 +5,8 @@ import Layout from "@/components/Layout";
 import FadeIn from "@/components/FadeIn";
 import SectionHeading from "@/components/SectionHeading";
 import UpcomingEvents from "@/components/UpcomingEvents";
+import FaqSection from "@/components/FaqSection";
+import { HOME_FAQS } from "@/lib/seo";
 import heroBg from "@/assets/hero-bg.jpg";
 import barPatio from "@/assets/Bar Patio.webp";
 import bar from "@/assets/bar.jpg";
@@ -44,30 +46,6 @@ const signatureDishes = [
 const Index = () => {
   return (
     <Layout>
-      {/* JSON-LD Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Restaurant",
-            name: "Elements by 456",
-            image: heroBg,
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: ADDRESS_LINE_1,
-              addressLocality: "Gun Barrel City",
-              addressRegion: "TX",
-              postalCode: "75156",
-            },
-            telephone: "+19039107666",
-            servesCuisine: "American",
-            priceRange: "$$",
-            openingHoursSpecification: OPENING_HOURS_SPEC,
-          }),
-        }}
-      />
-
       {/* HERO */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div
@@ -90,9 +68,11 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl mx-auto"
+            className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto"
           >
-            Gun Barrel City's ultimate lakefront social destination.
+            Gun Barrel City's ultimate lakefront social destination. Elements by 456 is a restaurant and patio bar on
+            Cedar Creek Lake serving brunch, lunch and dinner — with live music, karaoke and comedy nights on the
+            largest bar on the lake.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -354,6 +334,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* FAQ — visible content backing the FAQPage schema */}
+      <FaqSection faqs={HOME_FAQS} subtitle="Quick answers before you head to the lake." className="bg-secondary" />
 
       {/* FINAL CTA */}
       <section className="py-16 md:py-20 gold-gradient relative overflow-hidden">

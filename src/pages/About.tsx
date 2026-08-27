@@ -18,6 +18,10 @@ const About = () => {
             <h1 className="text-4xl md:text-6xl font-display font-bold uppercase">
               Where Lake Life Meets <span className="gold-gradient-text">Nightlife</span>
             </h1>
+            <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto">
+              Elements by 456 is a lakefront restaurant and bar in Gun Barrel City, TX with indoor dining, two bars,
+              and live entertainment on Cedar Creek Lake.
+            </p>
           </FadeIn>
         </div>
       </section>

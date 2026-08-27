@@ -32,7 +32,10 @@ const Reservations = () => {
             <h1 className="text-4xl md:text-6xl font-display font-bold uppercase">
               Lock In Your <span className="gold-gradient-text">Table</span>
             </h1>
-            <p className="mt-4 text-muted-foreground text-lg">Walk-ins welcome. Reservations guaranteed.</p>
+            <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto">
+              Walk-ins welcome. Reservations guaranteed. Book a table online at Elements by 456 in Gun Barrel City, TX
+              — the fastest way to lock in your spot on live music, karaoke and comedy nights.
+            </p>
           </FadeIn>
         </div>
       </section>

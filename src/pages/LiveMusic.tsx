@@ -20,7 +20,10 @@ const LiveMusic = () => {
             <h1 className="text-4xl md:text-6xl font-display font-bold uppercase">
               Live Music at <span className="gold-gradient-text">Elements</span>
             </h1>
-            <p className="mt-4 text-muted-foreground text-lg">Weekend nights on the patio — the lake comes alive.</p>
+            <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto">
+              Weekend nights on the patio — the lake comes alive. Local and touring bands play the lakefront patio
+              stage at Elements by 456 in Gun Barrel City, TX on Cedar Creek Lake.
+            </p>
           </FadeIn>
         </div>
       </section>

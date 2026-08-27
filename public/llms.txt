@@ -1,0 +1,39 @@
+# Elements by 456
+
+> Elements by 456 is a lakefront restaurant and patio bar in Gun Barrel City, Texas, on Cedar Creek Lake (about an hour southeast of Dallas). It serves elevated comfort food for weekend brunch, midday and dinner, handcrafted cocktails at the Oasis Patio Bar — the largest bar on the lake — and hosts live music, weekly karaoke and comedy nights. Reservations and online ordering are handled through Toast.
+
+- Address: 456 S. Gun Barrel Ln., Gun Barrel City, TX 75156
+- Phone: (903) 910-7666
+- Hours: Mon & Thu 11am–10pm · Fri & Sat 11am–11pm · Sun 11am–8pm · Closed Tue & Wed
+- Brunch: Sat & Sun 11am–2pm · Dinner: from 4pm
+- Reservations: https://elementsccl.com/reservations
+- Order online: https://order.toasttab.com/online/elements-by-456
+- Facebook: https://www.facebook.com/ElementsBy456
+
+## Main pages
+
+- [Home](https://elementsccl.com/): Overview of the restaurant, patio bar, upcoming events, signature dishes, hours, location and FAQ.
+- [Menu](https://elementsccl.com/menu): Full brunch, midday and dinner menus with prices, house favorites and gluten-free markers. Everything is fried in beef tallow.
+- [Specials](https://elementsccl.com/specials): Happy hour 5–7pm every open day, Burger Monday, karaoke-night taco and margarita deals, rotating chef features.
+- [Events Calendar](https://elementsccl.com/events): Live, calendar-driven list of upcoming live music, karaoke and comedy dates with times and descriptions.
+- [Reservations](https://elementsccl.com/reservations): Book a table online through Toast; walk-ins welcome.
+- [Contact & Hours](https://elementsccl.com/contact): Phone, address, map, weekly hours and contact form.
+
+## Experiences
+
+- [Live Music](https://elementsccl.com/live-music): Local and touring bands and musicians on the lakefront patio stage most weekends.
+- [Karaoke Night](https://elementsccl.com/karaoke-night): Weekly karaoke with group tables, no cover, and taco/margarita specials.
+- [Oasis Patio Bar](https://elementsccl.com/oasis-patio-bar): The largest outdoor bar on Cedar Creek Lake — lake views, signature cocktails, sunsets.
+- [Patriot Bar](https://elementsccl.com/patriot-bar): Indoor bar honoring military, veterans and first responders.
+- [About](https://elementsccl.com/about): The story, the two bars and the entertainment.
+
+## Bookings & inquiries
+
+- [Catering & Private Events](https://elementsccl.com/catering): Birthdays, corporate events and lake celebrations with full bar and kitchen service; 24-hour response.
+- [Perform at Elements](https://elementsccl.com/entertainment-inquiry): Inquiry form for musicians, bands, DJs, comedians and promoters.
+- [Join Our Team](https://elementsccl.com/careers): Employment application for servers, bartenders, cooks and hosts.
+
+## Optional
+
+- [Full site text](https://elementsccl.com/llms-full.txt): Complete plain-text rendering of the site's static content.
+- [Sitemap](https://elementsccl.com/sitemap.xml)

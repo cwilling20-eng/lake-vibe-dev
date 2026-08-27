@@ -30,6 +30,7 @@ const EntertainmentInquiry = () => {
             </h1>
             <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto">
               Musicians, DJs, comedians, and promoters — bring your act to the biggest stage on Cedar Creek Lake.
+              Elements by 456 in Gun Barrel City, TX books live entertainment for its lakefront patio year-round.
             </p>
           </FadeIn>
         </div>

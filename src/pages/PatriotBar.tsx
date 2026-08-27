@@ -18,7 +18,10 @@ const PatriotBar = () => {
             <h1 className="text-4xl md:text-6xl font-display font-bold uppercase">
               The Patriot <span className="gold-gradient-text">Bar</span>
             </h1>
-            <p className="mt-4 text-muted-foreground text-lg">Honoring those who serve. Built on respect, gratitude, and community.</p>
+            <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto">
+              Honoring those who serve. Built on respect, gratitude, and community. The Patriot Bar is the indoor bar
+              at Elements by 456 in Gun Barrel City, TX dedicated to military, veterans and first responders.
+            </p>
           </FadeIn>
         </div>
       </section>

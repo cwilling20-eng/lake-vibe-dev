@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import ScrollToTop from "./components/ScrollToTop";
+import Seo from "./components/Seo";
 import Index from "./pages/Index";
 
 const About = lazy(() => import("./pages/About"));
@@ -30,35 +31,42 @@ const Loading = () => (
   </div>
 );
 
-const App = () => (
+// Everything except the router, so the same tree can be rendered inside a
+// BrowserRouter (client) or a StaticRouter (build-time prerender).
+export const AppShell = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <ScrollToTop />
-        <Suspense fallback={<Loading />}>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/menu" element={<MenuPage />} />
-            <Route path="/specials" element={<Specials />} />
-            <Route path="/events" element={<Events />} />
-            <Route path="/reservations" element={<Reservations />} />
-            <Route path="/catering" element={<Catering />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/live-music" element={<LiveMusic />} />
-            <Route path="/karaoke-night" element={<KaraokeNight />} />
-            <Route path="/oasis-patio-bar" element={<OasisPatioBar />} />
-            <Route path="/patriot-bar" element={<PatriotBar />} />
-            <Route path="/entertainment-inquiry" element={<EntertainmentInquiry />} />
-            <Route path="/careers" element={<Careers />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
+      <ScrollToTop />
+      <Seo />
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/menu" element={<MenuPage />} />
+          <Route path="/specials" element={<Specials />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/reservations" element={<Reservations />} />
+          <Route path="/catering" element={<Catering />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/live-music" element={<LiveMusic />} />
+          <Route path="/karaoke-night" element={<KaraokeNight />} />
+          <Route path="/oasis-patio-bar" element={<OasisPatioBar />} />
+          <Route path="/patriot-bar" element={<PatriotBar />} />
+          <Route path="/entertainment-inquiry" element={<EntertainmentInquiry />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </TooltipProvider>
   </QueryClientProvider>
+);
+
+const App = () => (
+  <BrowserRouter>
+    <AppShell />
+  </BrowserRouter>
 );
 
 export default App;

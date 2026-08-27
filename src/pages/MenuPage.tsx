@@ -220,6 +220,10 @@ const MenuPage = () => {
             <h1 className="text-4xl md:text-6xl font-display font-bold uppercase">
               Our <span className="gold-gradient-text">Menu</span>
             </h1>
+            <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto">
+              Brunch, midday and dinner at Elements by 456 in Gun Barrel City, TX — elevated comfort food, fresh
+              ingredients, and everything fried in beef tallow.
+            </p>
           </FadeIn>
         </div>
       </section>

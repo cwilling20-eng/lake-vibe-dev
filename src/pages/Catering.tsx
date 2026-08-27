@@ -2,6 +2,8 @@ import Layout from "@/components/Layout";
 import FadeIn from "@/components/FadeIn";
 import SectionHeading from "@/components/SectionHeading";
 import GoogleFormEmbed from "@/components/GoogleFormEmbed";
+import FaqSection from "@/components/FaqSection";
+import { CATERING_FAQS } from "@/lib/seo";
 import privateEvents from "@/assets/private-events.jpg";
 
 // Client-managed Google Form. Questions and responses live in Google Forms —
@@ -21,6 +23,10 @@ const Catering = () => {
             <h1 className="text-4xl md:text-6xl font-display font-bold uppercase">
               Bring The Vibes To <span className="gold-gradient-text">Your Event</span>
             </h1>
+            <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto">
+              Private parties, corporate events and lake celebrations at Elements by 456 in Gun Barrel City, TX —
+              full bar and kitchen service on Cedar Creek Lake.
+            </p>
           </FadeIn>
         </div>
       </section>
@@ -62,6 +68,8 @@ const Catering = () => {
           </FadeIn>
         </div>
       </section>
+
+      <FaqSection title="Private Event FAQ" faqs={CATERING_FAQS} className="bg-secondary" />
     </Layout>
   );
 };

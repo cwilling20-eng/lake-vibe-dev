@@ -33,6 +33,10 @@ const Contact = () => {
             <h1 className="text-4xl md:text-6xl font-display font-bold uppercase">
               Get In <span className="gold-gradient-text">Touch</span>
             </h1>
+            <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto">
+              Elements by 456 · {ADDRESS_LINE_1}, {CITY_STATE_ZIP} on Cedar Creek Lake. Call (903) 910-7666 or send
+              us a message below.
+            </p>
           </FadeIn>
         </div>
       </section>

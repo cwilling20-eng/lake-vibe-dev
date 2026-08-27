@@ -21,7 +21,10 @@ const Events = () => {
             <h1 className="text-4xl md:text-6xl font-display font-bold uppercase">
               Always Something <span className="gold-gradient-text">Happening</span>
             </h1>
-            <p className="mt-4 text-muted-foreground text-lg">Live music. Karaoke. Comedy. Good times.</p>
+            <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto">
+              Live music. Karaoke. Comedy. Good times. Every upcoming event at Elements by 456 in Gun Barrel City,
+              TX — straight from our calendar, so dates and times are always current.
+            </p>
           </FadeIn>
         </div>
       </section>

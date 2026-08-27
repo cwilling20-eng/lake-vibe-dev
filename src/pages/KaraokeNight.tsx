@@ -19,7 +19,10 @@ const KaraokeNight = () => {
             <h1 className="text-4xl md:text-6xl font-display font-bold uppercase">
               Karaoke <span className="gold-gradient-text">Night</span>
             </h1>
-            <p className="mt-4 text-muted-foreground text-lg">Take the mic. Own the room.</p>
+            <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto">
+              Take the mic. Own the room. Weekly karaoke nights at Elements by 456 in Gun Barrel City, TX — group
+              tables, taco and margarita specials, and no cover.
+            </p>
           </FadeIn>
         </div>
       </section>

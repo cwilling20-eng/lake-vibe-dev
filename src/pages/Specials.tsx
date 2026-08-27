@@ -55,7 +55,10 @@ const Specials = () => {
             <h1 className="text-4xl md:text-6xl font-display font-bold uppercase">
               What's <span className="gold-gradient-text">Happening</span>
             </h1>
-            <p className="mt-4 text-muted-foreground text-lg">Drink deals, standing specials, and rotating chef features.</p>
+            <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto">
+              Drink deals, standing specials, and rotating chef features at Elements by 456 in Gun Barrel City, TX.
+              Happy hour runs 5–7pm every day we're open.
+            </p>
           </FadeIn>
         </div>
       </section>

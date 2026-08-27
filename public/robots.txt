@@ -1,14 +1,75 @@
+# Robots.txt — AI-Optimized Configuration
+# Business: Elements by 456
+# Updated: 2026-08-26
+# Strategy: Maximum AI visibility — allow all crawlers
+
+# Traditional Search Engines
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
+# OpenAI Ecosystem
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic / Claude Ecosystem
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+# Google AI (Gemini training)
+User-agent: Google-Extended
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Amazon
+User-agent: Amazonbot
+Allow: /
+
+# Other AI Search
+User-agent: YouBot
+Allow: /
+
+User-agent: Cohere-ai
+Allow: /
+
+# Social previews
 User-agent: Twitterbot
 Allow: /
 
 User-agent: facebookexternalhit
 Allow: /
 
+# Default — allow everything not explicitly listed
 User-agent: *
 Allow: /
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://elementsccl.com/sitemap.xml

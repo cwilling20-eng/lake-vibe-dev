@@ -29,7 +29,8 @@ const Careers = () => {
               Join Our <span className="gold-gradient-text">Team</span>
             </h1>
             <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto">
-              Servers, bartenders, cooks, hosts — if you bring the energy, we'll bring the lake.
+              Servers, bartenders, cooks, hosts — if you bring the energy, we'll bring the lake. Elements by 456 is a
+              lakefront restaurant and patio bar in Gun Barrel City, TX, and we're hiring.
             </p>
           </FadeIn>
         </div>
