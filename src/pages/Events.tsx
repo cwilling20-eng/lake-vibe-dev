@@ -3,7 +3,7 @@ import { CalendarDays } from "lucide-react";
 import Layout from "@/components/Layout";
 import FadeIn from "@/components/FadeIn";
 import SectionHeading from "@/components/SectionHeading";
-import UpcomingEvents from "@/components/UpcomingEvents";
+import EventsExplorer from "@/components/events/EventsExplorer";
 import { CALENDAR_PUBLIC_URL } from "@/lib/events/calendar";
 import elementsLiveMusic from "@/assets/Elements Live Music.webp";
 
@@ -30,14 +30,10 @@ const Events = () => {
       <section className="section-padding bg-background">
         <div className="container-site">
           <SectionHeading
-            title="Upcoming Events"
+            title="What's Happening at Elements"
             subtitle="All times are local to Gun Barrel City. The calendar updates as new dates are added."
           />
-          <UpcomingEvents
-            emptyTitle="No upcoming events posted yet."
-            emptyBody="We're always adding live music, karaoke, and comedy dates. Check back soon or follow us on Facebook."
-            linkToEvents={false}
-          />
+          <EventsExplorer />
           <FadeIn>
             <p className="mt-10 text-center text-sm text-muted-foreground">
               <CalendarDays size={14} className="inline-block text-primary mr-1.5 -mt-0.5" aria-hidden="true" />

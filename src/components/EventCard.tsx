@@ -1,16 +1,7 @@
-import { Music, Mic, Disc3, Laugh, Sparkles, CalendarDays, Clock, MapPin } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
-import type { EventCategory, SiteEvent } from "@/lib/events/types";
+import { Clock, MapPin } from "lucide-react";
+import { CATEGORY_ICONS } from "@/components/events/categoryIcons";
+import type { SiteEvent } from "@/lib/events/types";
 import { formatDateBadge, formatEventTime, isOffsiteLocation } from "@/lib/events/format";
-
-const CATEGORY_ICONS: Record<EventCategory, LucideIcon> = {
-  "Live Music": Music,
-  Karaoke: Mic,
-  DJ: Disc3,
-  Comedy: Laugh,
-  "Special Event": Sparkles,
-  Other: CalendarDays,
-};
 
 interface EventCardProps {
   event: SiteEvent;
