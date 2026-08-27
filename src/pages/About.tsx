@@ -5,6 +5,8 @@ import SectionHeading from "@/components/SectionHeading";
 import patio from "@/assets/patio.jpg";
 import bar from "@/assets/bar.jpg";
 import eventsMusic from "@/assets/events-music.jpg";
+// TODO(client asset): replace with the supplied Main Dining photograph when received.
+import mainDining from "@/assets/private-events.jpg";
 
 const About = () => {
   return (
@@ -18,35 +20,53 @@ const About = () => {
             <h1 className="text-4xl md:text-6xl font-display font-bold uppercase">
               Where Lake Life Meets <span className="gold-gradient-text">Nightlife</span>
             </h1>
-            <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto">
-              Elements by 456 is a lakefront restaurant and bar in Gun Barrel City, TX with indoor dining, two bars,
-              and live entertainment on Cedar Creek Lake.
-            </p>
           </FadeIn>
         </div>
       </section>
 
-      {/* Story */}
+      {/* Story — client-approved copy (authoritative; do not rewrite) */}
       <section className="section-padding bg-background">
-        <div className="container-site max-w-3xl text-center">
+        <div className="container-site max-w-3xl">
           <FadeIn>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Elements by 456 isn't just a restaurant — it's a destination. We built this place for
-              the lake lovers, the music fans, the foodies, and the people who know that the best nights
-              start with great food and even better company. Fresh ingredients. Indoor and outdoor vibes.
-              The largest bar on the lake. And an energy you won't find anywhere else on Cedar Creek.
-            </p>
+            <div className="flex flex-col gap-6 text-lg text-muted-foreground leading-relaxed text-center md:text-left">
+              <p className="text-xl md:text-2xl font-display font-bold text-foreground leading-snug">
+                Elements By 456 is more than a restaurant—it’s where the Cedar Creek Lake community comes together.
+              </p>
+              <p>
+                Rooted in a local family with seven generations of history in this community, we created Elements for
+                people who love great food, cold drinks, live music, comedy, and good company. From brunch and happy
+                hour to dinner, karaoke, live entertainment, and special events, there’s always something happening
+                here.
+              </p>
+              <p>
+                Planning a celebration? We also host private parties, showers, business gatherings, and other special
+                occasions, with catering available both on-site and off-site.
+              </p>
+              <p>
+                Come as you are, bring your people, and stay awhile. Around here, strangers become regulars, regulars
+                become family, and boring nights don’t stand much of a chance.
+              </p>
+            </div>
           </FadeIn>
         </div>
       </section>
 
-      {/* Our Bars */}
+      {/* Our Spaces */}
       <section className="section-padding bg-secondary">
         <div className="container-site">
-          <SectionHeading title="Our Bars" />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <SectionHeading title="Our Spaces" subtitle="Indoor dining, the patio, and the Patriot Bar." />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <FadeIn>
-              <div className="rounded-xl overflow-hidden">
+              <div className="rounded-xl overflow-hidden h-full">
+                <img src={mainDining} alt="Main dining room at Elements by 456" className="w-full aspect-[4/3] object-cover" loading="lazy" />
+                <div className="p-6 bg-card">
+                  <h3 className="text-xl font-display font-bold text-primary">Main Dining</h3>
+                  <p className="mt-2 text-muted-foreground">Our indoor dining room — sit-down service for brunch, midday, and dinner, and the setting for private parties and special occasions.</p>
+                </div>
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <div className="rounded-xl overflow-hidden h-full">
                 <img src={patio} alt="Oasis Patio Bar" className="w-full aspect-[4/3] object-cover" loading="lazy" />
                 <div className="p-6 bg-card">
                   <h3 className="text-xl font-display font-bold text-primary">Oasis Patio Bar</h3>
@@ -54,8 +74,8 @@ const About = () => {
                 </div>
               </div>
             </FadeIn>
-            <FadeIn delay={0.15}>
-              <div className="rounded-xl overflow-hidden">
+            <FadeIn delay={0.2}>
+              <div className="rounded-xl overflow-hidden h-full">
                 <img src={bar} alt="Patriot Bar" className="w-full aspect-[4/3] object-cover" loading="lazy" />
                 <div className="p-6 bg-card">
                   <h3 className="text-xl font-display font-bold text-primary">Patriot Bar</h3>

@@ -9,6 +9,8 @@ import FaqSection from "@/components/FaqSection";
 import { HOME_FAQS } from "@/lib/seo";
 import heroBg from "@/assets/hero-bg.jpg";
 import barPatio from "@/assets/Bar Patio.webp";
+// TODO(client asset): replace with the supplied Main Dining photograph when received.
+import mainDining from "@/assets/private-events.jpg";
 import bar from "@/assets/bar.jpg";
 import whiskey from "@/assets/Whiskey.webp";
 import steakShrimp from "@/assets/Steak and Shrimp.webp";
@@ -25,6 +27,7 @@ import {
 } from "@/lib/siteInfo";
 
 const experienceBlocks = [
+  { title: "Main Dining", desc: "Sit-down dining from brunch through dinner in our indoor dining room.", img: mainDining, link: "/menu", alt: "Main dining room at Elements by 456" },
   { title: "Oasis Patio Bar", desc: "The largest and most beautiful bar on the lake.", img: barPatio, link: "/oasis-patio-bar" },
   { title: "Patriot Bar", desc: "Honoring our service men and women.", img: bar, link: "/patriot-bar" },
   { title: "Craft Cocktails", desc: "Our mixologists don't pour drinks. They create moments.", img: whiskey, link: "/menu" },
@@ -52,13 +55,13 @@ const Index = () => {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${heroBg})` }}
         />
-        <div className="absolute inset-0 overlay-dark-heavy" />
-        <div className="relative z-10 text-center container-site">
+        <div className="absolute inset-0 overlay-hero" />
+        <div className="relative z-10 text-center container-site pt-24 md:pt-32 self-end pb-20 md:pb-28">
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold uppercase leading-tight"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold uppercase leading-tight text-shadow-lg"
           >
             Strong Drinks.<br />
             <span className="gold-gradient-text">Bold Flavor.</span><br />
@@ -68,7 +71,7 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto"
+            className="mt-6 text-lg md:text-xl text-foreground/90 max-w-2xl mx-auto text-shadow-lg"
           >
             Gun Barrel City's ultimate lakefront social destination. Elements by 456 is a restaurant and patio bar on
             Cedar Creek Lake serving brunch, lunch and dinner — with live music, karaoke and comedy nights on the
@@ -90,7 +93,7 @@ const Index = () => {
               href={ORDER_ONLINE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 text-sm font-bold uppercase tracking-widest border-2 border-primary text-primary rounded-lg hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              className="px-8 py-4 text-sm font-bold uppercase tracking-widest border-2 border-primary text-primary bg-background/60 backdrop-blur-sm rounded-lg hover:bg-primary hover:text-primary-foreground transition-all duration-300"
             >
               Order Online
             </a>
@@ -151,14 +154,14 @@ const Index = () => {
       {/* THE EXPERIENCE */}
       <section className="section-padding bg-background">
         <div className="container-site">
-          <SectionHeading title="The Experience" subtitle="Three ways to feel the energy." />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <SectionHeading title="The Experience" subtitle="Dining room, patio bar, Patriot Bar, craft cocktails." />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {experienceBlocks.map((block, i) => (
               <FadeIn key={block.title} delay={i * 0.15}>
                 <Link to={block.link} className="group relative rounded-xl overflow-hidden aspect-[4/5] cursor-pointer block">
                   <img
                     src={block.img}
-                    alt={block.title}
+                    alt={"alt" in block ? block.alt : block.title}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     loading="lazy"
                   />

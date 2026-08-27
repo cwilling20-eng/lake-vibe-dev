@@ -2,7 +2,7 @@ import { useState } from "react";
 import Layout from "@/components/Layout";
 import FadeIn from "@/components/FadeIn";
 import { MapPin, Phone, Clock } from "lucide-react";
-import { HOURS, ADDRESS_LINE_1, CITY_STATE_ZIP, MAPS_EMBED_URL } from "@/lib/siteInfo";
+import { HOURS, ADDRESS_LINE_1, CITY_STATE_ZIP, MAPS_EMBED_URL, MAPS_LINK_URL } from "@/lib/siteInfo";
 import { submitWeb3Form } from "@/lib/web3forms";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -33,10 +33,25 @@ const Contact = () => {
             <h1 className="text-4xl md:text-6xl font-display font-bold uppercase">
               Get In <span className="gold-gradient-text">Touch</span>
             </h1>
-            <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto">
-              Elements by 456 · {ADDRESS_LINE_1}, {CITY_STATE_ZIP} on Cedar Creek Lake. Call (903) 910-7666 or send
-              us a message below.
-            </p>
+            <div className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto flex flex-col gap-3">
+              <p>Have a question, need help with a reservation, or want to learn more about hosting an event at Elements?</p>
+              <p>
+                Visit us at{" "}
+                <a
+                  href={MAPS_LINK_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-foreground hover:text-primary underline decoration-primary/50 underline-offset-4"
+                >
+                  456 S. Gun Barrel Ln. in Gun Barrel City
+                </a>
+                , proudly serving the Cedar Creek Lake community. Call or text us at{" "}
+                <a href="tel:9039107666" className="font-bold text-foreground hover:text-primary">
+                  (903) 910-7666
+                </a>
+                , or send us a message using the form below.
+              </p>
+            </div>
           </FadeIn>
         </div>
       </section>

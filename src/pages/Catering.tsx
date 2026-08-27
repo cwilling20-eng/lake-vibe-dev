@@ -21,12 +21,18 @@ const Catering = () => {
         <div className="relative z-10 text-center container-site pt-20">
           <FadeIn>
             <h1 className="text-4xl md:text-6xl font-display font-bold uppercase">
-              Bring The Vibes To <span className="gold-gradient-text">Your Event</span>
+              Make Your Event An <span className="gold-gradient-text">Elements Event</span>
             </h1>
-            <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto">
-              Private parties, corporate events and lake celebrations at Elements by 456 in Gun Barrel City, TX —
-              full bar and kitchen service on Cedar Creek Lake.
-            </p>
+            <div className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto flex flex-col gap-3">
+              <p>
+                From birthdays, showers, and anniversary celebrations to corporate gatherings, luncheons, and holiday
+                parties, Elements By 456 makes hosting easy.
+              </p>
+              <p>
+                Celebrate with us in Gun Barrel City with private-event space, customized food options, and full bar
+                service. Need us to bring the food to you? On-site and off-site catering options are also available.
+              </p>
+            </div>
           </FadeIn>
         </div>
       </section>
@@ -36,9 +42,9 @@ const Catering = () => {
           <SectionHeading title="What We Offer" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
             {[
-              { title: "Private Parties", desc: "Birthdays, anniversaries, and celebrations with full bar and kitchen service." },
-              { title: "Corporate Events", desc: "Team dinners, client entertainment, and business gatherings done right." },
-              { title: "Lake Celebrations", desc: "Only on Cedar Creek Lake. Make it one for the books." },
+              { title: "Private Parties", desc: "Birthdays, showers, and anniversary celebrations with full bar service." },
+              { title: "Corporate & Business", desc: "Corporate gatherings, luncheons, and holiday parties done right." },
+              { title: "On-Site & Off-Site Catering", desc: "Celebrate with us, or let us bring the food to you." },
             ].map((item, i) => (
               <FadeIn key={item.title} delay={i * 0.1}>
                 <div className="bg-card p-6 rounded-xl border border-border text-center">

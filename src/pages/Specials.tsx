@@ -3,7 +3,7 @@ import Layout from "@/components/Layout";
 import FadeIn from "@/components/FadeIn";
 import SectionHeading from "@/components/SectionHeading";
 import UpcomingEvents from "@/components/UpcomingEvents";
-import { Clock, Beef, Mic } from "lucide-react";
+import { Clock, Beef, Utensils } from "lucide-react";
 import steakShrimp from "@/assets/Steak and Shrimp.webp";
 import salmonSquared from "@/assets/salmon_squared.webp";
 import grilledSalmon from "@/assets/Grilled Salmon.webp";
@@ -17,21 +17,21 @@ import pancakes from "@/assets/Pancakes.webp";
 const standingDeals = [
   {
     title: "Happy Hour",
-    when: "5–7pm, every day we're open",
+    when: "3–6pm, every day we're open",
     desc: "Drink deals at the largest bar on Cedar Creek Lake.",
     icon: Clock,
+  },
+  {
+    title: "Taco Thursday & $5 Margaritas",
+    when: "Every Thursday",
+    desc: "A weekly Elements social — tacos and $5 margaritas every Thursday.",
+    icon: Utensils,
   },
   {
     title: "Burger Monday",
     when: "Mondays · Dinner only",
     desc: "$1 off any burger — and another $1 off when you add fries.",
     icon: Beef,
-  },
-  {
-    title: "Karaoke Night Deals",
-    when: "On karaoke nights",
-    desc: "$12 street tacos and $5 margaritas while you own the mic. See the calendar for dates.",
-    icon: Mic,
   },
 ];
 
@@ -55,10 +55,20 @@ const Specials = () => {
             <h1 className="text-4xl md:text-6xl font-display font-bold uppercase">
               What's <span className="gold-gradient-text">Happening</span>
             </h1>
-            <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto">
-              Drink deals, standing specials, and rotating chef features at Elements by 456 in Gun Barrel City, TX.
-              Happy hour runs 5–7pm every day we're open.
-            </p>
+            <div className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto flex flex-col gap-3">
+              <p>
+                There’s always something worth ordering at Elements By 456. Enjoy Happy Hour from{" "}
+                <strong className="text-foreground">3–6 PM every day we’re open</strong>, along with weekly food and
+                drink deals and rotating chef-inspired specials.
+              </p>
+              <p>
+                Looking for something a little more elevated? Our{" "}
+                <strong className="text-foreground">Elements After 5</strong> menu features premium steaks, seafood,
+                and distinctive evening dishes designed for dinner, date night, or simply treating yourself because
+                cooking at home sounds awful.
+              </p>
+              <p>Specials and featured dishes change regularly, so check back often to see what we’re serving next.</p>
+            </div>
           </FadeIn>
         </div>
       </section>
@@ -66,7 +76,7 @@ const Specials = () => {
       {/* Standing deals */}
       <section className="section-padding bg-background">
         <div className="container-site">
-          <SectionHeading title="Standing Specials" subtitle="Here's what's going down when we're open." />
+          <SectionHeading title="Weekly Specials" subtitle="Here's what's going down when we're open." />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {standingDeals.map((deal, i) => (
               <FadeIn key={deal.title} delay={i * 0.1}>

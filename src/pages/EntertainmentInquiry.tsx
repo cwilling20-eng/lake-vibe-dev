@@ -29,8 +29,8 @@ const EntertainmentInquiry = () => {
               Perform at <span className="gold-gradient-text">Elements</span>
             </h1>
             <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto">
-              Musicians, DJs, comedians, and promoters — bring your act to the biggest stage on Cedar Creek Lake.
-              Elements by 456 in Gun Barrel City, TX books live entertainment for its lakefront patio year-round.
+              Are you a musician, band, DJ, comedian, karaoke host, or entertainment provider looking for your next
+              venue?
             </p>
           </FadeIn>
         </div>
@@ -58,10 +58,17 @@ const EntertainmentInquiry = () => {
                 Interested in Performing at Elements?
               </h2>
               <div className="mt-4 h-0.5 w-16 gold-gradient mx-auto" />
-              <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-                Tell us about your act and availability. Our team reviews every inquiry and will reach out to
-                talk dates.
-              </p>
+              <div className="mt-4 text-muted-foreground max-w-2xl mx-auto flex flex-col gap-3">
+                <p>
+                  Elements By 456 books a variety of live entertainment and special events at our indoor and outdoor
+                  spaces in Gun Barrel City. Tell us about your act, experience, availability, and equipment by
+                  completing the entertainment inquiry form below.
+                </p>
+                <p>
+                  Submitting an inquiry does not guarantee a booking, but it puts your information directly in front
+                  of our events team for consideration.
+                </p>
+              </div>
             </div>
             <GoogleFormEmbed
               src={ENTERTAINMENT_FORM_URL}

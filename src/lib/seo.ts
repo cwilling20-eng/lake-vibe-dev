@@ -1,4 +1,4 @@
-import { ADDRESS_LINE_1, OPENING_HOURS_SPEC, ORDER_ONLINE_URL } from "./siteInfo";
+import { ADDRESS_LINE_1, OPENING_HOURS_SPEC, ORDER_ONLINE_URL, SOCIAL_LINKS } from "./siteInfo";
 
 // SINGLE SOURCE OF TRUTH for SEO / GEO metadata and structured data.
 //
@@ -22,7 +22,6 @@ export const SITE = {
   postalCode: "75156",
   phoneDisplay: "(903) 910-7666",
   phoneE164: "+1-903-910-7666",
-  facebook: "https://www.facebook.com/ElementsBy456",
   ogImage: "https://elementsccl.com/og-image.jpg",
   logo: "https://elementsccl.com/apple-touch-icon.png",
   description:
@@ -61,22 +60,22 @@ export const HOME_FAQS: FaqItem[] = [
   },
   {
     q: "Can I host a private event or party at Elements by 456?",
-    a: "Yes. We host birthdays, anniversaries, corporate events, and lake celebrations with full bar and kitchen service. Submit the catering and private event form and our team will respond within 24 hours.",
+    a: "Yes. We host birthdays, showers, anniversaries, corporate gatherings, luncheons, and holiday parties with private-event space and full bar service, and on-site and off-site catering are available. Submit the catering and private event form and our team will respond within 24 hours.",
   },
 ];
 
 export const CATERING_FAQS: FaqItem[] = [
   {
     q: "What kinds of events can Elements by 456 host?",
-    a: "We host private parties such as birthdays and anniversaries, corporate events including team dinners and client entertainment, and lake celebrations on Cedar Creek Lake. Full bar and kitchen service are available for every event.",
+    a: "We host birthdays, showers, and anniversary celebrations, plus corporate gatherings, luncheons, and holiday parties, with private-event space, customized food options, and full bar service. On-site and off-site catering options are also available.",
   },
   {
     q: "How do I request a private event or catering booking?",
     a: "Fill out the Request a Booking form on this page with your event date, guest count, and details. Our team reviews every request and responds within 24 hours. You can also call (903) 910-7666 to talk it through.",
   },
   {
-    q: "Where are private events held?",
-    a: "Private events are held at Elements by 456 in Gun Barrel City, Texas, with indoor dining space and the Oasis Patio Bar, the largest outdoor bar on Cedar Creek Lake, available depending on your group size and the occasion.",
+    q: "Do you offer off-site catering?",
+    a: "Yes. Along with hosting events at Elements by 456 in Gun Barrel City, we offer on-site and off-site catering, so we can bring the food to your location. Mention off-site catering in the booking form and our team will follow up with options.",
   },
 ];
 
@@ -105,17 +104,17 @@ export const PAGES: PageSeo[] = [
       "Elements by 456 is a lakefront restaurant and patio bar in Gun Barrel City, TX on Cedar Creek Lake, serving brunch, lunch and dinner with live music, karaoke and comedy nights.",
     breadcrumb: "Home",
     datePublished: "2026-06-12",
-    dateModified: "2026-08-26",
+    dateModified: "2026-08-27",
     faqs: HOME_FAQS,
   },
   {
     path: "/about",
     title: "About Us",
     description:
-      "Elements by 456 is a Gun Barrel City, TX restaurant and bar on Cedar Creek Lake with indoor dining, the Oasis Patio Bar, the Patriot Bar, live music, karaoke and comedy.",
+      "Elements by 456 is a family-rooted Gun Barrel City, TX restaurant on Cedar Creek Lake with a main dining room, the Oasis Patio Bar, the Patriot Bar, live music, karaoke and comedy.",
     breadcrumb: "About",
     datePublished: "2026-06-12",
-    dateModified: "2026-08-26",
+    dateModified: "2026-08-27",
   },
   {
     path: "/menu",
@@ -130,10 +129,10 @@ export const PAGES: PageSeo[] = [
     path: "/specials",
     title: "Specials & Happy Hour",
     description:
-      "Specials at Elements by 456 in Gun Barrel City, TX: happy hour 5–7pm every open day, Burger Monday deals, karaoke night tacos and margaritas, plus rotating chef features.",
+      "Specials at Elements by 456 in Gun Barrel City, TX: Happy Hour 3–6pm every day we're open, Taco Thursday with $5 margaritas, Burger Monday, and the Elements After 5 dinner menu.",
     breadcrumb: "Specials",
     datePublished: "2026-06-12",
-    dateModified: "2026-08-26",
+    dateModified: "2026-08-27",
   },
   {
     path: "/events",
@@ -142,7 +141,7 @@ export const PAGES: PageSeo[] = [
       "Upcoming events at Elements by 456 in Gun Barrel City, TX: live music on the patio stage, weekly karaoke nights and comedy shows on Cedar Creek Lake, updated from our calendar.",
     breadcrumb: "Events",
     datePublished: "2026-06-12",
-    dateModified: "2026-08-26",
+    dateModified: "2026-08-27",
   },
   {
     path: "/live-music",
@@ -189,16 +188,16 @@ export const PAGES: PageSeo[] = [
       "Reserve a table at Elements by 456 in Gun Barrel City, TX online through Toast. Walk-ins welcome; reservations guarantee your table on live music, karaoke and comedy nights.",
     breadcrumb: "Reservations",
     datePublished: "2026-06-12",
-    dateModified: "2026-08-26",
+    dateModified: "2026-08-27",
   },
   {
     path: "/catering",
     title: "Catering & Private Events",
     description:
-      "Book a private party, corporate event or lake celebration at Elements by 456 in Gun Barrel City, TX with full bar and kitchen service. Submit the form and hear back within 24 hours.",
+      "Host birthdays, showers, corporate gatherings and holiday parties at Elements by 456 in Gun Barrel City, TX, with private-event space, full bar service and on-site or off-site catering.",
     breadcrumb: "Catering & Private Events",
     datePublished: "2026-06-12",
-    dateModified: "2026-08-26",
+    dateModified: "2026-08-27",
     faqs: CATERING_FAQS,
   },
   {
@@ -208,7 +207,7 @@ export const PAGES: PageSeo[] = [
       "Contact Elements by 456 at (903) 910-7666 or visit 456 S. Gun Barrel Ln, Gun Barrel City, TX 75156 on Cedar Creek Lake. See weekly hours, map directions and send us a message.",
     breadcrumb: "Contact",
     datePublished: "2026-06-12",
-    dateModified: "2026-08-26",
+    dateModified: "2026-08-27",
   },
   {
     path: "/entertainment-inquiry",
@@ -217,17 +216,17 @@ export const PAGES: PageSeo[] = [
       "Musicians, bands, DJs, comedians and promoters can apply to perform at Elements by 456 in Gun Barrel City, TX. Submit the entertainment inquiry form and our team will reach out.",
     breadcrumb: "Perform at Elements",
     datePublished: "2026-08-26",
-    dateModified: "2026-08-26",
+    dateModified: "2026-08-27",
     parent: EVENTS_PARENT,
   },
   {
     path: "/careers",
     title: "Join Our Team — Careers",
     description:
-      "Apply to work at Elements by 456, a lakefront restaurant and patio bar in Gun Barrel City, TX hiring servers, bartenders, cooks and hosts. Submit the short application online.",
+      "Join the Elements by 456 team, a locally owned restaurant and entertainment destination in Gun Barrel City, TX. Dependable, hospitality-minded people can apply online in minutes.",
     breadcrumb: "Join Our Team",
     datePublished: "2026-08-26",
-    dateModified: "2026-08-26",
+    dateModified: "2026-08-27",
   },
 ];
 
@@ -281,7 +280,7 @@ export const restaurantSchema = () => ({
   hasMenu: abs("/menu"),
   acceptsReservations: abs("/reservations"),
   potentialAction: { "@type": "OrderAction", target: ORDER_ONLINE_URL },
-  sameAs: [SITE.facebook, ORDER_ONLINE_URL],
+  sameAs: [SOCIAL_LINKS.facebook, SOCIAL_LINKS.instagram, SOCIAL_LINKS.tiktok, ORDER_ONLINE_URL],
   amenityFeature: [
     { "@type": "LocationFeatureSpecification", name: "Outdoor patio bar", value: true },
     { "@type": "LocationFeatureSpecification", name: "Live music", value: true },

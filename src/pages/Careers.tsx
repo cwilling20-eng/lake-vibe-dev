@@ -10,10 +10,11 @@ const CAREERS_FORM_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSeDxbOl6MWfKnNwOU8xbq-IK3FP-cRMXLQPhr97xBpliajsYA/viewform?embedded=true";
 const CAREERS_FORM_HEIGHT = 985;
 
+// Client-approved copy (authoritative).
 const perks = [
-  { icon: Sun, title: "Work on the Lake", desc: "Your office is the largest patio bar on Cedar Creek Lake." },
-  { icon: Users, title: "A Real Team", desc: "Front of house, back of house, bar — we show up for each other." },
-  { icon: TrendingUp, title: "Room to Grow", desc: "Busy nights, big events, and plenty of chances to step up." },
+  { icon: Sun, title: "Never a Dull Shift", desc: "From brunch and busy dinner services to live music, comedy, private parties, and special events, no two shifts are exactly alike." },
+  { icon: Users, title: "One Team, One Goal", desc: "Front of house, kitchen, and bar work together to give every guest a reason to come back." },
+  { icon: TrendingUp, title: "Opportunities to Grow", desc: "Build valuable hospitality experience, strengthen your skills, and take on more responsibility as opportunities become available." },
 ];
 
 const Careers = () => {
@@ -26,11 +27,11 @@ const Careers = () => {
         <div className="relative z-10 text-center container-site pt-20">
           <FadeIn>
             <h1 className="text-4xl md:text-6xl font-display font-bold uppercase">
-              Join Our <span className="gold-gradient-text">Team</span>
+              Join the <span className="gold-gradient-text">Elements Team</span>
             </h1>
             <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto">
-              Servers, bartenders, cooks, hosts — if you bring the energy, we'll bring the lake. Elements by 456 is a
-              lakefront restaurant and patio bar in Gun Barrel City, TX, and we're hiring.
+              Good food, busy nights, live entertainment, and a team that knows how to work hard without making work
+              miserable.
             </p>
           </FadeIn>
         </div>
@@ -38,6 +39,19 @@ const Careers = () => {
 
       <section className="section-padding bg-background">
         <div className="container-site">
+          <FadeIn>
+            <div className="max-w-3xl mx-auto text-center text-lg text-muted-foreground leading-relaxed flex flex-col gap-5 mb-16">
+              <p>
+                Elements By 456 is a locally owned restaurant and entertainment destination serving the Cedar Creek Lake
+                community in Gun Barrel City. We’re always interested in meeting dependable, hardworking people with a
+                positive attitude and a heart for hospitality.
+              </p>
+              <p>
+                Whether you’re experienced or ready to learn, if you can bring the energy, take care of our guests, and
+                show up for your team, we’d love to hear from you.
+              </p>
+            </div>
+          </FadeIn>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
             {perks.map((item, i) => (
               <FadeIn key={item.title} delay={i * 0.1}>
@@ -54,9 +68,6 @@ const Careers = () => {
             <div className="text-center mb-8">
               <h2 className="text-2xl md:text-3xl font-display font-bold uppercase">Apply Now</h2>
               <div className="mt-4 h-0.5 w-16 gold-gradient mx-auto" />
-              <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-                Fill out the short application below and we'll be in touch.
-              </p>
             </div>
             <GoogleFormEmbed src={CAREERS_FORM_URL} title="Employment application form" height={CAREERS_FORM_HEIGHT} />
             <p className="mt-6 text-center text-sm text-muted-foreground">

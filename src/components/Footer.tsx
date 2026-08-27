@@ -1,7 +1,14 @@
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Clock, Facebook } from "lucide-react";
+import { MapPin, Phone, Clock, Facebook, Instagram } from "lucide-react";
 import logo from "@/assets/logo.png";
-import { HOURS, ADDRESS_LINE_1, CITY_STATE_ZIP } from "@/lib/siteInfo";
+import { HOURS, ADDRESS_LINE_1, CITY_STATE_ZIP, SOCIAL_LINKS } from "@/lib/siteInfo";
+
+// lucide has no TikTok glyph; a minimal inline mark keeps the icon set consistent.
+const TikTokIcon = ({ size = 18 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M16.5 2h-3.1v13.2a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.2a6.1 6.1 0 1 0 5.1 6V8.6a7.2 7.2 0 0 0 4.3 1.4V6.9A4.4 4.4 0 0 1 16.5 2z" />
+  </svg>
+);
 
 const Footer = () => {
   return (
@@ -14,15 +21,24 @@ const Footer = () => {
             <p className="text-muted-foreground text-sm leading-relaxed">
               Cedar Creek Lake's go-to spot for elevated comfort food, handcrafted cocktails, and unforgettable nights.
             </p>
-            <a
-              href="https://www.facebook.com/ElementsBy456"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Elements by 456 on Facebook"
-              className="mt-4 inline-flex items-center justify-center w-10 h-10 rounded-full border border-border text-primary hover:bg-primary hover:text-primary-foreground transition-all"
-            >
-              <Facebook size={18} />
-            </a>
+            <div className="mt-4 flex items-center gap-3">
+              {[
+                { name: "Facebook", href: SOCIAL_LINKS.facebook, Icon: Facebook },
+                { name: "Instagram", href: SOCIAL_LINKS.instagram, Icon: Instagram },
+                { name: "TikTok", href: SOCIAL_LINKS.tiktok, Icon: TikTokIcon },
+              ].map(({ name, href, Icon }) => (
+                <a
+                  key={name}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Elements by 456 on ${name}`}
+                  className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-border text-primary hover:bg-primary hover:text-primary-foreground transition-all"
+                >
+                  <Icon size={18} />
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Quick Links */}

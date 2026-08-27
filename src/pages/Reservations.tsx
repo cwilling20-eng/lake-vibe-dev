@@ -30,12 +30,18 @@ const Reservations = () => {
         <div className="relative z-10 text-center container-site pt-20">
           <FadeIn>
             <h1 className="text-4xl md:text-6xl font-display font-bold uppercase">
-              Lock In Your <span className="gold-gradient-text">Table</span>
+              Save Your <span className="gold-gradient-text">Seat</span>
             </h1>
-            <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto">
-              Walk-ins welcome. Reservations guaranteed. Book a table online at Elements by 456 in Gun Barrel City, TX
-              — the fastest way to lock in your spot on live music, karaoke and comedy nights.
-            </p>
+            <div className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto flex flex-col gap-3">
+              <p>
+                Walk-ins are always welcome, but reservations are recommended—especially for live music, karaoke,
+                comedy, and other special-event nights.
+              </p>
+              <p>
+                Reserve your table online at Elements By 456 in Gun Barrel City and spend less time waiting and more
+                time eating, drinking, and enjoying the show.
+              </p>
+            </div>
           </FadeIn>
         </div>
       </section>

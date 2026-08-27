@@ -3,8 +3,19 @@
 
 export const ORDER_ONLINE_URL = "https://order.toasttab.com/online/elements-by-456";
 
+// Official social profiles (verified by the client, 2026-08-27).
+export const SOCIAL_LINKS = {
+  facebook: "https://www.facebook.com/ElementsBy456",
+  instagram: "https://www.instagram.com/elementsby456/",
+  tiktok: "https://www.tiktok.com/@elements.by.456",
+} as const;
+
 export const ADDRESS_LINE_1 = "456 S. Gun Barrel Ln.";
 export const CITY_STATE_ZIP = "Gun Barrel City, TX 75156";
+
+// Google Maps link for the address (opens Maps / the Maps app).
+export const MAPS_LINK_URL =
+  "https://www.google.com/maps?q=456%20S.%20Gun%20Barrel%20Ln%2C%20Gun%20Barrel%20City%2C%20TX%2075156";
 
 // Google Maps address-query embed (no API key required).
 export const MAPS_EMBED_URL =

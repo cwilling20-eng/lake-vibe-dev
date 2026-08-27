@@ -19,12 +19,19 @@ const Events = () => {
         <div className="relative z-10 text-center container-site pt-20">
           <FadeIn>
             <h1 className="text-4xl md:text-6xl font-display font-bold uppercase">
-              Always Something <span className="gold-gradient-text">Happening</span>
+              There’s Always Something <span className="gold-gradient-text">Happening</span>
             </h1>
-            <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto">
-              Live music. Karaoke. Comedy. Good times. Every upcoming event at Elements by 456 in Gun Barrel City,
-              TX — straight from our calendar, so dates and times are always current.
-            </p>
+            <div className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto flex flex-col gap-3">
+              <p>
+                Live music, karaoke, comedy, themed nights, and special events—boring evenings don’t get much attention
+                around here.
+              </p>
+              <p>
+                Explore the upcoming lineup at Elements By 456 in Gun Barrel City and make plans before somebody else
+                gets your favorite table. Our calendar is updated regularly with the latest dates, times, and event
+                details.
+              </p>
+            </div>
           </FadeIn>
         </div>
       </section>
@@ -34,7 +41,7 @@ const Events = () => {
         <div className="container-site">
           <SectionHeading
             title="What's Happening at Elements"
-            subtitle="All times are local to Gun Barrel City. The calendar updates as new dates are added."
+            subtitle="All times are local to Gun Barrel City."
           />
           <EventsExplorer />
           <FadeIn>
