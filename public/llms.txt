@@ -1,11 +1,12 @@
 # Elements by 456
 
-> Elements by 456 is a lakefront restaurant and patio bar in Gun Barrel City, Texas, on Cedar Creek Lake (about an hour southeast of Dallas). It serves elevated comfort food for weekend brunch, midday and dinner, handcrafted cocktails at the Oasis Patio Bar — the largest bar on the lake — and hosts live music, weekly karaoke and comedy nights. Reservations and online ordering are handled through Toast.
+> Elements by 456 is a lakefront restaurant and patio bar in Gun Barrel City, Texas, on Cedar Creek Lake (about an hour southeast of Dallas). It serves elevated comfort food for Sunday brunch, midday and dinner, handcrafted cocktails at the Oasis Patio Bar — the largest bar on the lake — and hosts live music, weekly karaoke and comedy nights. Reservations and online ordering are handled through Toast.
 
 - Address: 456 S. Gun Barrel Ln., Gun Barrel City, TX 75156
 - Phone: (903) 910-7666
-- Hours: Mon & Thu 11am–10pm · Fri & Sat 11am–11pm · Sun 11am–8pm · Closed Tue & Wed
-- Brunch: Sat & Sun 11am–2pm · Dinner: from 4pm
+- Hours: Mon, Thu & Fri 3pm–10pm · Sat 11am–10pm · Sun Brunch 9am–3pm · Closed Tue & Wed
+- Happy Hour: 3–6pm Monday and Thursday through Saturday (no Happy Hour on Sunday)
+- Sunday Brunch: 9am–3pm · Dinner: from 4pm Monday and Thursday–Saturday
 - Reservations: https://elementsccl.com/reservations
 - Order online: https://order.toasttab.com/online/elements-by-456
 - Facebook: https://www.facebook.com/ElementsBy456
@@ -16,7 +17,7 @@
 
 - [Home](https://elementsccl.com/): Overview of the restaurant, patio bar, upcoming events, signature dishes, hours, location and FAQ.
 - [Menu](https://elementsccl.com/menu): Full brunch, midday and dinner menus with prices, house favorites and gluten-free markers. Everything is fried in beef tallow.
-- [Specials](https://elementsccl.com/specials): Happy Hour 3–6pm every open day, Taco Thursday & $5 Margaritas every Thursday, Burger Monday, Elements After 5 dinner menu, rotating chef features.
+- [Specials](https://elementsccl.com/specials): Happy Hour 3–6pm Monday and Thursday through Saturday, Taco Thursday & $5 Margaritas every Thursday, Burger Monday, Elements After 5 dinner menu, rotating chef features.
 - [Events Calendar](https://elementsccl.com/events): Live, calendar-driven list of upcoming live music, karaoke and comedy dates with times and descriptions.
 - [Reservations](https://elementsccl.com/reservations): Book a table online through Toast; walk-ins welcome.
 - [Contact & Hours](https://elementsccl.com/contact): Phone, address, map, weekly hours and contact form.

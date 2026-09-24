@@ -4,6 +4,7 @@ import FadeIn from "@/components/FadeIn";
 import SectionHeading from "@/components/SectionHeading";
 import UpcomingEvents from "@/components/UpcomingEvents";
 import { Clock, Beef, Utensils } from "lucide-react";
+import { HAPPY_HOUR_DAYS, HAPPY_HOUR_DAYS_SHORT, HAPPY_HOUR_TIME } from "@/lib/siteInfo";
 import steakShrimp from "@/assets/Steak and Shrimp.webp";
 import salmonSquared from "@/assets/salmon_squared.webp";
 import grilledSalmon from "@/assets/Grilled Salmon.webp";
@@ -20,11 +21,11 @@ import pancakes from "@/assets/Pancakes.webp";
 const promos = [
   {
     title: "Happy Hour",
-    when: "3–6pm, every day we're open",
-    desc: "Drink deals at the largest bar on Cedar Creek Lake.",
+    when: `${HAPPY_HOUR_TIME} · ${HAPPY_HOUR_DAYS_SHORT}`,
+    desc: `Drink deals at the largest bar on Cedar Creek Lake, ${HAPPY_HOUR_TIME} ${HAPPY_HOUR_DAYS}. No Happy Hour on Sunday.`,
     icon: Clock,
     flyer: "/elements_happy_hour.webp",
-    flyerAlt: "Elements Happy Hour flyer — every day 3pm to 6pm, with $3, $6 and $9 drink and appetizer specials",
+    flyerAlt: "Elements Happy Hour flyer with $3, $6 and $9 drink and appetizer specials",
   },
   {
     title: "Taco Thursday & $5 Margaritas",
@@ -66,7 +67,7 @@ const Specials = () => {
             <div className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto flex flex-col gap-3">
               <p>
                 There’s always something worth ordering at Elements By 456. Enjoy Happy Hour from{" "}
-                <strong className="text-foreground">3–6 PM every day we’re open</strong>, along with weekly food and
+                <strong className="text-foreground">3–6 PM {HAPPY_HOUR_DAYS}</strong>, along with weekly food and
                 drink deals and rotating chef-inspired specials.
               </p>
               <p>

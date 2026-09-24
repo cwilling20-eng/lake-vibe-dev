@@ -24,20 +24,19 @@ const MEAL_META: Record<
   MealKey,
   {
     label: string;
-    hours: string;
+    hours?: string;
     tagline?: string;
     difference?: { title: string; subtitle: string };
   }
 > = {
-  brunch: { label: "Brunch", hours: "Sat & Sun · 11am–2pm" },
+  brunch: { label: "Brunch", hours: "Sunday · 9am–3pm" },
   midday: {
     label: "Midday",
-    hours: "Mon · Thu · Fri · 11am–3pm",
     difference: { title: "The Elements Difference", subtitle: "Scratch-Made. Never Ordinary." },
   },
   dinner: {
     label: "Dinner",
-    hours: "Served from 4pm",
+    hours: "Mon · Thu–Sat · Served from 4pm",
     tagline: "We fry everything in beef tallow. You'll taste the difference.",
   },
 };
@@ -177,7 +176,7 @@ const MealView = ({ mealKey, categories }: { mealKey: MealKey; categories: MenuC
   return (
     <>
       <div className="container-site text-center mt-6">
-        <p className="text-sm uppercase tracking-widest text-muted-foreground">{meta.hours}</p>
+        {meta.hours && <p className="text-sm uppercase tracking-widest text-muted-foreground">{meta.hours}</p>}
 
         {meta.tagline && <p className="mt-3 text-muted-foreground text-lg">{meta.tagline}</p>}
 

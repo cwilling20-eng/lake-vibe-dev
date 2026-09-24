@@ -1,4 +1,12 @@
-import { ADDRESS_LINE_1, OPENING_HOURS_SPEC, ORDER_ONLINE_URL, SOCIAL_LINKS } from "./siteInfo";
+import {
+  ADDRESS_LINE_1,
+  HAPPY_HOUR_DAYS,
+  HAPPY_HOUR_DAYS_SHORT,
+  HAPPY_HOUR_TIME,
+  OPENING_HOURS_SPEC,
+  ORDER_ONLINE_URL,
+  SOCIAL_LINKS,
+} from "./siteInfo";
 
 // SINGLE SOURCE OF TRUTH for SEO / GEO metadata and structured data.
 //
@@ -44,7 +52,7 @@ export const HOME_FAQS: FaqItem[] = [
   },
   {
     q: "What are the hours at Elements by 456?",
-    a: "We are open Monday and Thursday 11am–10pm, Friday and Saturday 11am–11pm, and Sunday 11am–8pm. We are closed on Tuesday and Wednesday. Brunch is served Saturday and Sunday from 11am–2pm, and dinner service starts at 4pm.",
+    a: `We are open Monday, Thursday and Friday 3pm–10pm, Saturday 11am–10pm, and Sunday for brunch from 9am–3pm. We are closed on Tuesday and Wednesday. Happy Hour is ${HAPPY_HOUR_TIME} ${HAPPY_HOUR_DAYS}, with no Happy Hour on Sunday. Dinner is served from 4pm Monday and Thursday through Saturday.`,
   },
   {
     q: "Does Elements by 456 take reservations?",
@@ -104,7 +112,7 @@ export const PAGES: PageSeo[] = [
       "Elements by 456 is a lakefront restaurant and patio bar in Gun Barrel City, TX on Cedar Creek Lake, serving brunch, lunch and dinner with live music, karaoke and comedy nights.",
     breadcrumb: "Home",
     datePublished: "2026-06-12",
-    dateModified: "2026-08-27",
+    dateModified: "2026-09-24",
     faqs: HOME_FAQS,
   },
   {
@@ -120,19 +128,19 @@ export const PAGES: PageSeo[] = [
     path: "/menu",
     title: "Menu — Brunch, Midday & Dinner",
     description:
-      "Elements by 456 menu in Gun Barrel City, TX: weekend brunch, midday lunch and dinner with elevated comfort food, burgers, steaks, seafood and desserts, all fried in beef tallow.",
+      "Elements by 456 menu in Gun Barrel City, TX: Sunday brunch, midday lunch and dinner with elevated comfort food, burgers, steaks, seafood and desserts, all fried in beef tallow.",
     breadcrumb: "Menu",
     datePublished: "2026-06-12",
-    dateModified: "2026-08-26",
+    dateModified: "2026-09-24",
   },
   {
     path: "/specials",
     title: "Specials & Happy Hour",
     description:
-      "Specials at Elements by 456 in Gun Barrel City, TX: Happy Hour 3–6pm every day we're open, Taco Thursday with $5 margaritas, Burger Monday, and the Elements After 5 dinner menu.",
+      `Specials at Elements by 456 in Gun Barrel City, TX: Happy Hour ${HAPPY_HOUR_TIME} ${HAPPY_HOUR_DAYS_SHORT}, Taco Thursday with $5 margaritas, Burger Monday and Elements After 5.`,
     breadcrumb: "Specials",
     datePublished: "2026-06-12",
-    dateModified: "2026-08-27",
+    dateModified: "2026-09-24",
   },
   {
     path: "/events",
@@ -207,7 +215,7 @@ export const PAGES: PageSeo[] = [
       "Contact Elements by 456 at (903) 910-7666 or visit 456 S. Gun Barrel Ln, Gun Barrel City, TX 75156 on Cedar Creek Lake. See weekly hours, map directions and send us a message.",
     breadcrumb: "Contact",
     datePublished: "2026-06-12",
-    dateModified: "2026-08-27",
+    dateModified: "2026-09-24",
   },
   {
     path: "/entertainment-inquiry",
