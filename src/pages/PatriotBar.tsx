@@ -3,7 +3,8 @@ import Layout from "@/components/Layout";
 import FadeIn from "@/components/FadeIn";
 import SectionHeading from "@/components/SectionHeading";
 import { Shield, Heart, Flag } from "lucide-react";
-import barImg from "@/assets/bar.jpg";
+// Client-supplied Patriot Bar photograph (public/, optimized WebP).
+const barImg = "/elements_patriot_bar.webp";
 
 const PatriotBar = () => {
   return (
@@ -32,7 +33,7 @@ const PatriotBar = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <FadeIn direction="left">
               <div className="rounded-xl overflow-hidden aspect-[4/3]">
-                <img src={barImg} alt="The Patriot Bar" className="w-full h-full object-cover" loading="lazy" />
+                <img src={barImg} alt="Patriot Bar at Elements by 456 with purple-lit bar, seating, and televisions" className="w-full h-full object-cover" loading="lazy" />
               </div>
             </FadeIn>
             <FadeIn direction="right">

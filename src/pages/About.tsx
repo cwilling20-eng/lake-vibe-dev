@@ -3,10 +3,10 @@ import Layout from "@/components/Layout";
 import FadeIn from "@/components/FadeIn";
 import SectionHeading from "@/components/SectionHeading";
 import patio from "@/assets/patio.jpg";
-import bar from "@/assets/bar.jpg";
 import eventsMusic from "@/assets/events-music.jpg";
-// Client-supplied interior photograph (public/, optimized WebP).
-const mainDining = "/elements_inside_bar.webp";
+// Client-supplied interior photographs (public/, optimized WebP).
+const mainDining = "/elements_main_dining_3.webp";
+const patriotBar = "/elements_patriot_bar.webp";
 
 const About = () => {
   return (
@@ -58,7 +58,7 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <FadeIn>
               <div className="rounded-xl overflow-hidden h-full">
-                <img src={mainDining} alt="Main dining room and bar at Elements by 456 in Gun Barrel City" className="w-full aspect-[4/3] object-cover" loading="lazy" />
+                <img src={mainDining} alt="Main dining room at Elements by 456 in Gun Barrel City" className="w-full aspect-[4/3] object-cover" style={{ objectPosition: "50% 40%" }} loading="lazy" />
                 <div className="p-6 bg-card">
                   <h3 className="text-xl font-display font-bold text-primary">Main Dining</h3>
                   <p className="mt-2 text-muted-foreground">Our indoor dining room — sit-down service for brunch, midday, and dinner, and the setting for private parties and special occasions.</p>
@@ -76,7 +76,7 @@ const About = () => {
             </FadeIn>
             <FadeIn delay={0.2}>
               <div className="rounded-xl overflow-hidden h-full">
-                <img src={bar} alt="Patriot Bar" className="w-full aspect-[4/3] object-cover" loading="lazy" />
+                <img src={patriotBar} alt="Patriot Bar at Elements by 456 with purple-lit bar, seating, and televisions" className="w-full aspect-[4/3] object-cover" loading="lazy" />
                 <div className="p-6 bg-card">
                   <h3 className="text-xl font-display font-bold text-primary">Patriot Bar</h3>
                   <p className="mt-2 text-muted-foreground">Dedicated to the men and women who serve. A space of respect, community, and camaraderie — with killer drinks to match.</p>

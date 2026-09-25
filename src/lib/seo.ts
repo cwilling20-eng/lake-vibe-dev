@@ -265,7 +265,7 @@ export const restaurantSchema = () => ({
   description: SITE.description,
   url: SITE.domain,
   logo: { "@type": "ImageObject", url: SITE.logo, width: 180, height: 180 },
-  image: [SITE.ogImage, `${SITE.domain}/elements_outside_bar.webp`, `${SITE.domain}/elements_inside_bar.webp`],
+  image: [SITE.ogImage, `${SITE.domain}/elements_outside_bar.webp`, `${SITE.domain}/elements_main_dining_2.webp`],
   telephone: SITE.phoneE164,
   address: {
     "@type": "PostalAddress",

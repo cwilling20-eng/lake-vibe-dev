@@ -10,8 +10,8 @@ import { HOME_FAQS } from "@/lib/seo";
 import barPatio from "@/assets/Bar Patio.webp";
 // Client-supplied photography (public/, optimized WebP alongside the original PNGs).
 const HERO_IMG = "/elements_outside_bar.webp";
-const mainDining = "/elements_inside_bar.webp";
-import bar from "@/assets/bar.jpg";
+const mainDining = "/elements_main_dining_2.webp";
+const patriotBar = "/elements_patriot_bar.webp";
 import whiskey from "@/assets/Whiskey.webp";
 import steakShrimp from "@/assets/Steak and Shrimp.webp";
 import elementsLiveMusic from "@/assets/Elements Live Music.webp";
@@ -27,9 +27,9 @@ import {
 } from "@/lib/siteInfo";
 
 const experienceBlocks = [
-  { title: "Main Dining", desc: "Sit-down dining from brunch through dinner in our indoor dining room.", img: mainDining, link: "/menu", alt: "Main dining room and bar at Elements by 456 in Gun Barrel City" },
+  { title: "Main Dining", desc: "Sit-down dining from brunch through dinner in our indoor dining room.", img: mainDining, link: "/menu", alt: "Dining room at Elements by 456 with tables, artwork, and chandelier lighting" },
   { title: "Oasis Patio Bar", desc: "The largest and most beautiful bar on the lake.", img: barPatio, link: "/oasis-patio-bar" },
-  { title: "Patriot Bar", desc: "Honoring our service men and women.", img: bar, link: "/patriot-bar" },
+  { title: "Patriot Bar", desc: "Honoring our service men and women.", img: patriotBar, link: "/patriot-bar", alt: "Patriot Bar at Elements by 456 with purple-lit bar, seating, and televisions" },
   { title: "Craft Cocktails", desc: "Our mixologists don't pour drinks. They create moments.", img: whiskey, link: "/menu" },
 ];
 
