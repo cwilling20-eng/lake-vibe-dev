@@ -18,14 +18,28 @@ import pancakes from "@/assets/Pancakes.webp";
 //
 // Flyers are client-supplied artwork (public/, optimized WebP). The flyer
 // carries the detailed pricing; the copy stays to the verified core facts.
-const promos = [
+const promos: {
+  title: string;
+  when: string;
+  desc: string;
+  icon: typeof Clock;
+  flyer: string;
+  flyerAlt: string;
+  flyerWide?: boolean;
+  flyerHref?: string;
+}[] = [
   {
     title: "Happy Hour",
     when: `${HAPPY_HOUR_TIME} · ${HAPPY_HOUR_DAYS_SHORT}`,
     desc: `Drink deals at the largest bar on Cedar Creek Lake, ${HAPPY_HOUR_TIME} ${HAPPY_HOUR_DAYS}. No Happy Hour on Sunday.`,
     icon: Clock,
-    flyer: "/elements_happy_hour.webp",
-    flyerAlt: "Elements Happy Hour flyer with $3, $6 and $9 drink and appetizer specials",
+    flyer: "/elements_new_hours.webp",
+    // This flyer carries the full weekly hours in small type, so it gets a wider
+    // column and opens full-size on click.
+    flyerWide: true,
+    flyerHref: "/elements_new_hours.webp",
+    flyerAlt:
+      "Elements by 456 new hours flyer: Monday 3 PM to 10 PM, Tuesday and Wednesday closed, Thursday and Friday 3 PM to 10 PM, Saturday 11 AM to 10 PM, Sunday Brunch 9 AM to 3 PM, and Happy Hour Monday and Thursday through Saturday from 3 PM to 6 PM",
   },
   {
     title: "Taco Thursday & $5 Margaritas",
@@ -88,7 +102,7 @@ const Specials = () => {
           <SectionHeading title="Weekly Specials" subtitle="Here's what's going down when we're open." />
 
           {/* Promo + flyer pairs: side-by-side from sm, stacked on phones */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-6 lg:gap-8">
             {promos.map((p, i) => (
               <FadeIn key={p.title} delay={i * 0.1}>
                 <article className="h-full bg-card rounded-xl border border-border hover:border-primary/30 transition-colors overflow-hidden flex flex-col sm:flex-row">
@@ -100,14 +114,28 @@ const Specials = () => {
                     <h3 className="text-2xl font-display font-bold">{p.title}</h3>
                     <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
                   </div>
-                  <div className="sm:w-56 md:w-64 flex-shrink-0 bg-background/40 p-4 sm:p-3 flex items-center justify-center">
-                    <img
-                      src={p.flyer}
-                      alt={p.flyerAlt}
-                      className="w-full max-w-[280px] sm:max-w-none h-auto rounded-lg shadow-lg"
-                      loading="lazy"
-                      decoding="async"
-                    />
+                  <div
+                    className={`${p.flyerWide ? "sm:w-64 md:w-72 lg:w-80" : "sm:w-56 md:w-64"} flex-shrink-0 bg-background/40 p-4 sm:p-3 flex items-center justify-center`}
+                  >
+                    {p.flyerHref ? (
+                      <a
+                        href={p.flyerHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="Open full-size flyer"
+                        className="block w-full max-w-[320px] sm:max-w-none"
+                      >
+                        <img src={p.flyer} alt={p.flyerAlt} className="w-full h-auto rounded-lg shadow-lg" loading="lazy" decoding="async" />
+                      </a>
+                    ) : (
+                      <img
+                        src={p.flyer}
+                        alt={p.flyerAlt}
+                        className="w-full max-w-[280px] sm:max-w-none h-auto rounded-lg shadow-lg"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    )}
                   </div>
                 </article>
               </FadeIn>
